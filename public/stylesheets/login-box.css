@@ -1,13 +1,12 @@
 .login-panel{
  background-color: white;
- padding:40px;
+ padding:60px;
  overflow: auto;
  position: absolute;
  top: 50%;
  left: 50%;
  width: 500px;
  transform: translate(-50%, -50%); 
- padding: 60px;  
 }
 
 .login-panel img{
