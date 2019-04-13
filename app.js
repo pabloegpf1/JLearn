@@ -9,12 +9,12 @@ const coursesRouter = require('./routes/course.route');
 const app = express();
 
 // mongodb setup
-mongoose.connect(`URL FROM MLAB HERE`, {useNewUrlParser: true})
-    .then(() => console.log(`MongoDB connection successful`))
-    .catch(err => {
-        console.log(`MongoDB connection error: ${err}`);
-        createError(500);
-    });
+// mongoose.connect(`URL FROM MLAB HERE`, {useNewUrlParser: true})
+//     .then(() => console.log(`MongoDB connection successful`))
+//     .catch(err => {
+//         console.log(`MongoDB connection error: ${err}`);
+//         createError(500);
+//     });
 
 // view engine setup
 app.set(`view engine`, `ejs`);
@@ -25,10 +25,12 @@ app.use(logger(`dev`));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, `public`)));
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+
 
 // routes
 app.get('/', (req, res) => {
-    res.send(`/ route`);
+	res.render('pages/index');
 });
 app.use(`/courses`, coursesRouter);
 
