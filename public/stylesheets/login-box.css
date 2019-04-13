@@ -1,0 +1,30 @@
+#login-panel{
+ background-color: white;
+ padding:40px;
+ width:60%;
+ overflow: auto;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ width: 500px;
+ transform: translate(-50%, -50%);
+ background-color: #ffffff;
+ padding: 60px;  
+}
+
+
+#login-panel img{
+  max-width: 100%;
+}
+
+
+
+#login-panel h1,h2,h3{
+  padding:35px;
+  font-weight-bold
+}
+
+
+#login-panel input{
+  padding:15px;
+}
