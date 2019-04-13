@@ -1,5 +1,8 @@
 body{
- background-image: url("../images/global-login.jpg");
- background-size: 100%;
+ background: url("../images/global-login.jpg") no-repeat center center fixed;
+ -webkit-background-size: cover; /* For WebKit*/
+ -moz-background-size: cover;    /* Mozilla*/
+ -o-background-size: cover;      /* Opera*/
+ background-size: cover;  
  background-color: white;
 }
