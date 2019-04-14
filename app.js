@@ -26,9 +26,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, `public`)));
 
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); 
-app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+// redirect bootstrap dependencies
+app.use(express.static(path.join(__dirname,'/node_modules/bootstrap/dist'))); 
+app.use(express.static(path.join(__dirname,'/node_modules/jquery/dist'))); 
+
 
 
 // temporary serving view GET requests
