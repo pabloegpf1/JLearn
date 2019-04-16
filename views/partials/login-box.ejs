@@ -1,0 +1,46 @@
+ <div class="container container-fluid">
+  <div class="row">
+   <div id="login-panel" class="login-panel col col-12 col-lg-12 col-sm col-sm-auto ">
+ 
+      <img class="image-responsive" src="./images/SFState_Logo.png" alt="SFState_Logo">   
+      <h3 class="text-center primary-color-text">SF State Global Login</h3>
+      
+      
+      <%if (false == true) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Login Failed!</strong> <br>
+
+          We do not recognize your SF State ID and/or password. Please try again or visit 
+
+          <a href="#">Password and Login assistance.</a>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+         </div>
+       <% } %>
+ 
+      <form id="login-form">   
+        <div class="form-group">
+          <label for="loginKey">SF State ID or Email</label>
+          <input type="email" class="form-control" id="loginKey" placeholder="ex. 123456789">
+        </div>
+      
+        <div class="form-group">
+          <label for="loginPassword">SF State Password</label>
+          <input type="password" class="form-control" id="loginPassword">
+        </div>   
+
+        <div class="form-group">
+          <button class="btn primary-color-bg text-white btn-block btn-lg"> Login </button>
+        </div>   
+      </form>
+
+      <p class="text-center">
+      	<a href="#"> Get help signing in</a>
+      </p>
+
+   </div>  
+  </div>
+ </div>
+
+

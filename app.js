@@ -8,13 +8,13 @@ const coursesRouter = require('./routes/course.route');
 
 const app = express();
 
-// mongodb setup
-mongoose.connect(`URL FROM MLAB HERE`, {useNewUrlParser: true})
-    .then(() => console.log(`MongoDB connection successful`))
-    .catch(err => {
-        console.log(`MongoDB connection error: ${err}`);
-        createError(500);
-    });
+//mongodb setup
+//mongoose.connect(`URL FROM MLAB HERE`, {useNewUrlParser: true})
+//    .then(() => console.log(`MongoDB connection successful`))
+//    .catch(err => {
+//        console.log(`MongoDB connection error: ${err}`);
+//        createError(500);
+//    });
 
 // view engine setup
 app.set(`view engine`, `ejs`);
@@ -26,10 +26,21 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, `public`)));
 
-// routes
+// redirect bootstrap dependencies
+app.use(express.static(path.join(__dirname,'/node_modules/bootstrap/dist'))); 
+app.use(express.static(path.join(__dirname,'/node_modules/jquery/dist'))); 
+
+
+
+// temporary serving view GET requests
 app.get('/', (req, res) => {
-    res.send(`/ route`);
+	res.render('pages/index');
 });
+app.get('/home', (req, res) => {
+	res.render('pages/ilearn-homepage');
+});
+
+// Rest API routes
 app.use(`/courses`, coursesRouter);
 
 // if it made it here, app broke
