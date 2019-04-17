@@ -4,17 +4,19 @@ const logger = require('morgan');
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 
+
+const indexRouter = require('./routes/index.route');
 const coursesRouter = require('./routes/course.route');
 
 const app = express();
 
-//mongodb setup
-//mongoose.connect(`URL FROM MLAB HERE`, {useNewUrlParser: true})
-//    .then(() => console.log(`MongoDB connection successful`))
-//    .catch(err => {
-//        console.log(`MongoDB connection error: ${err}`);
-//        createError(500);
-//    });
+mongodb setup
+mongoose.connect(`URL FROM MLAB HERE`, {useNewUrlParser: true})
+    .then(() => console.log(`MongoDB connection successful`))
+    .catch(err => {
+        console.log(`MongoDB connection error: ${err}`);
+        createError(500);
+    });
 
 // view engine setup
 app.set(`view engine`, `ejs`);
@@ -24,23 +26,18 @@ app.set(`views`, path.join(__dirname, `views`));
 app.use(logger(`dev`));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+
 app.use(express.static(path.join(__dirname, `public`)));
+app.use(express.static(path.join(__dirname, `views/api`)));
+
 
 // redirect bootstrap dependencies
 app.use(express.static(path.join(__dirname,'/node_modules/bootstrap/dist'))); 
 app.use(express.static(path.join(__dirname,'/node_modules/jquery/dist'))); 
 
 
-
-// temporary serving view GET requests
-app.get('/', (req, res) => {
-	res.render('pages/index');
-});
-app.get('/home', (req, res) => {
-	res.render('pages/ilearn-homepage');
-});
-
-// Rest API routes
+app.use(`/`, indexRouter);
 app.use(`/courses`, coursesRouter);
 
 // if it made it here, app broke
