@@ -19,15 +19,15 @@
          </div>
        <% } %>
  
-      <form id="login-form">   
+      <form id="userLoginForm" action="/login" method="post">   
         <div class="form-group">
           <label for="loginKey">SF State ID or Email</label>
-          <input type="email" class="form-control" id="loginKey" placeholder="ex. 123456789">
+          <input type="text" class="form-control" name="loginKey" id="loginKey" placeholder="ex. 123456789">
         </div>
       
         <div class="form-group">
           <label for="loginPassword">SF State Password</label>
-          <input type="password" class="form-control" id="loginPassword">
+          <input type="password" class="form-control" name="loginPassword" id="loginPassword">
         </div>   
 
         <div class="form-group">
