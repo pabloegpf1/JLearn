@@ -10,7 +10,7 @@ const coursesRouter = require('./routes/course.route');
 
 const app = express();
 
-mongodb setup
+//mongodb setup
 mongoose.connect(`URL FROM MLAB HERE`, {useNewUrlParser: true})
     .then(() => console.log(`MongoDB connection successful`))
     .catch(err => {
