@@ -27,12 +27,8 @@ app.use(logger(`dev`));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-
+// frontend paths + redirect bootstrap dependencies
 app.use(express.static(path.join(__dirname, `public`)));
-app.use(express.static(path.join(__dirname, `views/api`)));
-
-
-// redirect bootstrap dependencies
 app.use(express.static(path.join(__dirname,'/node_modules/bootstrap/dist'))); 
 app.use(express.static(path.join(__dirname,'/node_modules/jquery/dist'))); 
 
