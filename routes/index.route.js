@@ -1,19 +1,26 @@
 // temporary serving view GET requests
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const indexController = require('../controllers/index.controller')
 
-router.get('/', (req, res) => {
-	res.render('pages/index');
-});
+router.get('/', indexController.list)
 
-router.get('/home', (req, res) => {
-	res.render('pages/ilearn-homepage');
-});
+router.get('/login', (req, res) => {
+	res.render('pages/login')
+})
 
-router.post('/login',(req, res)=> {
-  console.log("request: ");
-  console.log(req.body);
-  res.send('hello');
-});
+router.get('/profile', (req, res) => {
+	res.render('pages/profile')
+})
 
-module.exports = router;
+router.post('/login', (req, res) => {
+	console.log('request: ')
+	console.log(req.body)
+	res.send('hello')
+})
+
+router.post('/logout', (req, res) => {
+	res.send('hello')
+})
+
+module.exports = router

@@ -8,6 +8,7 @@ const course = require('./models/course.model')
 dotenv.config()
 
 const coursesRouter = require('./routes/course.route')
+const indexRouter = require('./routes/index.route')
 
 const app = express()
 
@@ -38,15 +39,8 @@ app.use(express.static(path.join(__dirname, `public`)))
 app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
 app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
 
-// temporary serving view GET requests
-app.get('/', (req, res) => {
-	res.render('pages/index')
-})
-app.get('/home', (req, res) => {
-	res.render('pages/ilearn-homepage')
-})
-
 // Rest API routes
+app.use(`/`, indexRouter)
 app.use(`/courses`, coursesRouter)
 
 // if it made it here, app broke
