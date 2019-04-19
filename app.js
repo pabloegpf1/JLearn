@@ -8,6 +8,7 @@ const course = require('./models/course.model')
 dotenv.config()
 
 const coursesRouter = require('./routes/course.route')
+const indexRouter = require('./routes/index.route')
 
 const app = express()
 
