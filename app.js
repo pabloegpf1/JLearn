@@ -4,7 +4,7 @@ const logger = require('morgan')
 const createError = require('http-errors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const course = require('./models/course.model')
+const Student = require('./models/student.model')
 dotenv.config()
 
 const coursesRouter = require('./routes/course.route')
@@ -12,13 +12,9 @@ const indexRouter = require('./routes/index.route')
 
 const app = express()
 
-mongoose
-	.connect(
-		`mongodb+srv://JLearn:${process.env.DB_PASSWORD}@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
-		{
-			useNewUrlParser: true
-		}
-	)
+mongoose.connect(`mongodb+srv://JLearn:${process.env.DB_PASSWORD}@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`, {
+	useNewUrlParser: true
+})
 	.then(() => console.log(`MongoDB connection successful`))
 	.catch((err) => {
 		console.log(`MongoDB connection error: ${err}`)
