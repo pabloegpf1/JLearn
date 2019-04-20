@@ -1,9 +1,9 @@
-var random = require('random-words')
 const mongoose = require('mongoose')
+const random = require('random-words')
 
-var User = require('../models/User.model')
-var Student = require('../models/Student.model');
-var Professor = require('../models/Professor.model');
+const User = require('../models/User.model')
+const Student = require('../models/Student.model');
+const Professor = require('../models/Professor.model');
 			
 mongoose
 	.connect(
@@ -51,7 +51,8 @@ let totalRoles = profRoles.length-1;
   );
 });
 
-//newProfessorCount
+
+//create "newProfessorCount" many new professors
 [...Array(newProfessorCount)].forEach((_, i) => {
   
   nextFirst = random()+i;
@@ -70,6 +71,8 @@ let totalRoles = profRoles.length-1;
   );
 });
 
+
+//save the student and professors to the database
 
 Student.insertMany(newStudents)
 	.then(function(mongooseDocuments) {
