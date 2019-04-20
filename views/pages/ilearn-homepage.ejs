@@ -19,7 +19,23 @@
 			  </div>
   
 			  <div class="col-sm-7 col-lg-8 col-xs-12">
-			  	<% include ../partials/course-accordions%>			  	
+				<div class="card">
+					<h5 class="card-header font-weight-bold">My Courses</h5>
+				  
+					<div class="card-body">
+						<% for(var i=0; i < courses.length; i++) { %>
+						  <div class="card">
+							 <div class="card-header" id="headingTwo">
+							   <h5 class="mb-0">
+								<button class="btn btn-link text-ilearn">               
+								  <%= courses[i].title %>
+								</button>                       
+							   </h5>
+							 </div>
+						  </div>
+						  <% } %>
+					</div>
+				  </div>			  	
 			  </div>
   
 			  <div class="col-sm-3 col-lg-3 col-xs-12">
