@@ -21,8 +21,8 @@ mongoose
 
 
 let nextId = 900000000;
-let newStudentCount = 1;
-let newProfessorCount = 1;
+let newStudentCount = 5000;
+let newProfessorCount = 10;
 let nextFirst='';
 
 
