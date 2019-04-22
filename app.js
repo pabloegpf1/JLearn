@@ -8,6 +8,7 @@ const passport = require('passport')
 const localStrategy = require('passport-local').Strategy;
 const Student = require('./models/student.model');
 var bodyParser = require('body-parser');
+const session = require('express-session');
 
 dotenv.config()
 
@@ -44,6 +45,24 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+// PASSPORT
+
+app.use(session({
+	secret: 'secret',
+	saveUninitialized: true,
+	resave: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+	done(null, user);
+});
+passport.deserializeUser(function (user, done) {
+	done(null, user);
+});
+
 // passport login strategy
 passport.use(new localStrategy({
 	usernameField: 'loginKey',
@@ -51,8 +70,6 @@ passport.use(new localStrategy({
 },
 	function (loginKey, loginPassword, done) {
 		Student.findOne({ sfsu_id: JSON.parse(loginKey) }, function (err, student) {
-			console.log(student)
-			console.log("Student.password: " + student.password + " given password:" + loginPassword)
 			if (err) {
 				return done(err)
 			}
@@ -60,7 +77,7 @@ passport.use(new localStrategy({
 				console.log("Incorrect username.")
 				return done(null, false, { message: 'Incorrect username.' });
 			}
-			if (student[password] != loginPassword) {
+			if (student.toObject().password != loginPassword) {
 				console.log("Incorrect password.")
 				return done(null, false, { message: 'Incorrect password.' });
 			}
