@@ -41,7 +41,6 @@ app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
 app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
 
 
-
 // Rest API routes
 app.use(`/`, indexRouter)
 app.use(`/courses`, coursesRouter)
