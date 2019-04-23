@@ -7,7 +7,9 @@ const indexController = require('../controllers/index.controller')
 router.get('/', indexController.list)
 
 router.get('/login', (req, res) => {
-	res.render('pages/login')
+	res.render('pages/login', {
+		authMessage: req.flash('authMessage'),
+	})
 })
 
 router.get('/profile', (req, res) => {
@@ -18,7 +20,7 @@ router.post('/login',
 	passport.authenticate('local', {
 		successRedirect: '/',
 		failureRedirect: '/login',
-		failureFlash: false
+		failureFlash: true
 	})
 )
 

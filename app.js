@@ -8,6 +8,7 @@ const passport = require('passport')
 const localStrategy = require('passport-local').Strategy;
 const Student = require('./models/student.model');
 var bodyParser = require('body-parser');
+const flash = require('connect-flash');
 const session = require('express-session');
 
 dotenv.config()
@@ -47,6 +48,7 @@ app.use(bodyParser.json());
 
 // PASSPORT
 
+app.use(flash());
 app.use(session({
 	secret: 'secret',
 	saveUninitialized: true,
@@ -66,24 +68,24 @@ passport.deserializeUser(function (user, done) {
 // passport login strategy
 passport.use(new localStrategy({
 	usernameField: 'loginKey',
-	passwordField: 'loginPassword'
-},
-	function (loginKey, loginPassword, done) {
-		Student.findOne({ sfsu_id: JSON.parse(loginKey) }, function (err, student) {
-			if (err) {
-				return done(err)
-			}
-			if (!student) {
-				console.log("Incorrect username.")
-				return done(null, false, { message: 'Incorrect username.' });
-			}
-			if (student.toObject().password != loginPassword) {
-				console.log("Incorrect password.")
-				return done(null, false, { message: 'Incorrect password.' });
-			}
-			return done(null, student);
-		});
-	}
+	passwordField: 'loginPassword',
+	passReqToCallback: true
+}, function (req, loginKey, loginPassword, done) {
+	Student.findOne({ sfsu_id: JSON.parse(loginKey) }, function (err, student) {
+		if (err) {
+			return done(err)
+		}
+		if (!student) {
+			console.log("Incorrect username.")
+			return done(null, false, req.flash("authMessage", 'Incorrect username.'));
+		}
+		if (student.toObject().password != loginPassword) {
+			console.log("Incorrect password.")
+			return done(null, false, req.flash("authMessage", 'Incorrect password.'));
+		}
+		return done(null, student);
+	});
+}
 ));
 
 // redirect bootstrap dependencies

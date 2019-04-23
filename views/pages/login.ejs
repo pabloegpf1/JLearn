@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>		
-	   <% include ../partials/bootstrap-head %>
-	          	       
-	   <link rel="stylesheet" href="./stylesheets/login-box.css"/>
-	   <link rel="stylesheet" href="./stylesheets/home-page.css"/>
-	   <link rel="stylesheet" href="./stylesheets/theme.css"/>
 
-	</head>
+<head>
+	<% include ../partials/bootstrap-head %>
 
-	<body class="container">
-		  	
+	<link rel="stylesheet" href="./stylesheets/login-box.css" />
+	<link rel="stylesheet" href="./stylesheets/home-page.css" />
+	<link rel="stylesheet" href="./stylesheets/theme.css" />
+
+</head>
+
+<body class="container">
+
+	<% if (authMessage.length > 0) { %>
+	<div class="alert alert-danger">
+		<%= authMessage %>
+	</div>
+	<% } %>
+
+	<login-box>
+		<% include ../partials/login-box %>
 		<login-box>
-   		  <% include ../partials/login-box %>
-		<login-box>		  			
-			
-	</body>
+
+</body>
+
 </html>
