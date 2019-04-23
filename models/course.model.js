@@ -1,12 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const courseBlockSchema = require('./courseBlock.model');
 
 const courseSchema = new Schema({
+    semester: {
+        type: String,
+        required: true,
+        enum: ['FALL', 'WINTER', 'SPRING', 'SUMMER'],
+        default: 'FALL'
+    },
     subject: {
         type: String,
         required: true
     },
-    courseNumber: {
+    number: {
         type: Number,
         required: true
     },
@@ -15,14 +22,20 @@ const courseSchema = new Schema({
         required: true
     },
     section: {
-        type: String,
+        type: Number,
         required: true
     },
-    description: {
-        type: String,
+    blocks: [courseBlockSchema],
+    students: {
+        type: Array,
+        default: []
     },
-    students: []
-})
+    professor: {
+        type: Schema.Types.ObjectId,
+        ref: 'Professor',
+        required: true
+    }
+});
 
 const Course = mongoose.model(`Course`, courseSchema);
 module.exports = Course;
