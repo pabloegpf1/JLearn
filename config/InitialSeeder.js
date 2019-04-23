@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const random = require('random-words')
 
-const User = require('../models/User.model')
 const Student = require('../models/Student.model');
 const Professor = require('../models/Professor.model');
 			
@@ -23,7 +22,7 @@ mongoose
 let nextId = 900000000;
 let newStudentCount = 5000;
 let newProfessorCount = 10;
-let nextFirst='';
+let nextFirstName='';
 
 
 let newStudents=[];
@@ -37,15 +36,16 @@ let totalRoles = profRoles.length-1;
 //create "newStudentCount" many new students
 [...Array(newStudentCount)].forEach((_, i) => {
   
-  nextFirst = random()+i; //ensure uniqueness in name and email
-  
+  nextFirstName = random()+i; //ensure uniqueness in name and email
+  nextId = nextId+1;
+
   newStudents.push(
     new Student({
-      sfsu_id: nextId + i,
-      first_name: nextFirst,
+      sfsu_id: nextId,
+      first_name: nextFirstName,
 	  last_name: random(),
-	  email: nextFirst+'@mail.sfsu.edu',
-	  password: nextFirst+'123',
+	  email: nextFirstName+'@mail.sfsu.edu',
+	  password: nextFirstName+'123',
 	  major: majorDepartments[Math.floor(Math.random() * totalMajorDepartment)], //select random element from majors array
     })  	
   );
@@ -55,15 +55,16 @@ let totalRoles = profRoles.length-1;
 //create "newProfessorCount" many new professors
 [...Array(newProfessorCount)].forEach((_, i) => {
   
-  nextFirst = random()+i;
-  
+  nextFirstName = random()+i;
+  nextId = nextId+1;
+
   newProfessors.push(
     new Professor({
-      sfsu_id: nextId + i,
-      first_name: nextFirst,
+      sfsu_id: nextId,
+      first_name: nextFirstName,
 	  last_name: random(),
-	  email: nextFirst+'@mail.sfsu.edu',
-	  password: nextFirst+'123',
+	  email: nextFirstName+'@mail.sfsu.edu',
+	  password: nextFirstName+'123',
 	  role: profRoles[Math.floor(Math.random() * totalRoles)],
 	  department: majorDepartments[Math.floor(Math.random() * totalMajorDepartment)],
 	  
