@@ -10,12 +10,12 @@ router.get('/home', (req, res) => {
 	res.render('pages/ilearn-homepage');
 });
 
-router.get('/grades', (req, res) => {
-	res.render('pages/grades');
+router.get('/assignment', (req, res) => {
+	res.render('pages/assignment');
 });
 
 router.get('/gradebook', (req, res) => {
-	res.render('pages/grade-book');
+	res.render('pages/gradebook');
 });
 
 module.exports = router;
