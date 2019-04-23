@@ -12,7 +12,7 @@ const coursesRouter = require('./routes/course.route')
 const indexRouter = require('./routes/index.route')
 
 const app = express()
-
+/*
 mongoose
 	.connect(
 		`mongodb+srv://JLearn:${process.env.DB_PASSWORD}@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
@@ -25,7 +25,7 @@ mongoose
 		console.log(`MongoDB connection error: ${err}`)
 		createError(500)
 	})
-
+*/
 // view engine setup
 app.set(`view engine`, `ejs`)
 app.set(`views`, path.join(__dirname, `views`))
