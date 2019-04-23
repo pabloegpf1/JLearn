@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/home', (req, res) => {
-	res.render('pages/ilearn-homepage');
+	res.render('pages/homepage');
 });
 
 router.get('/assignment', (req, res) => {
