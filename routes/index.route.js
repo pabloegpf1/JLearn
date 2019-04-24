@@ -18,4 +18,9 @@ router.get('/gradebook', (req, res) => {
 	res.render('pages/gradebook');
 });
 
+router.get('/profgradebook', (req, res) => {
+	res.render('pages/profgradebook');
+});
+
+
 module.exports = router;
