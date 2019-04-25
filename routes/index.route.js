@@ -18,8 +18,13 @@ router.get('/gradebook', (req, res) => {
 	res.render('pages/gradebook');
 });
 
+
 router.get('/coursedetail', (req, res) => {
 	res.render('pages/course-detail');
+});
+
+router.get('/profgradebook', (req, res) => {
+	res.render('pages/profgradebook');
 });
 
 module.exports = router;
