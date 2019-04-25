@@ -2,8 +2,6 @@
 <html lang="en">
 	<head>
 	   <% include ../partials/bootstrap-head %>	    
-
-	   <link rel="stylesheet" href="./stylesheets/theme.css"/>
 	</head>
 
 	<body>
@@ -18,18 +16,25 @@
 			  <div class="col-sm-2 col-lg-1 col-xs-12">			
 			  </div>
   
-			  <div class="col-sm-7 col-lg-8 col-xs-12">
-			  	<% include ../partials/course-detail%>			  	
-			  </div>
-  
-			  <div class="col-sm-3 col-lg-3 col-xs-12">
+			  <div class="col-sm-7 col-lg-8 col-xs-12">			  	
+							
+				<%- include('../partials/course-page/course-content-title', {title: 'Course Detail: CSC 0645-01 Computer Networks Spring 2019' , course:'CSC064501-S19R'}); %>	
 
-				<div class="col col-12">
-				  <% include ../partials/ilearn-support-card%>				
-				</div>	
+							
+
+				<div class="card">
+ 				  <div class="card-body">
+					<%- include('../partials/course-page/course-content-container', {title: 'hello'}); %>
+
+					<%- include('../partials/course-page/course-content-container', {title: 'hello'}); %>
+				  </div>				   
+				</div>
 				
 			  </div>
-		   </div>
-
+  
+			 <div class="col-lg-3 col-sm-12 col-xs-12">				
+				<% include ../partials/ilearn-support-card%>										
+			  </div>
+		</div>
 	</body>
 </html>
