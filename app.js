@@ -50,3 +50,60 @@ app.use(`/courses`, coursesRouter)
 app.use((req, res, next) => createError(500))
 
 app.listen(3000, () => console.log(`Express running...`))
+
+
+/*
+// passport login strategy
+passport.use(new localStrategy({
+	usernameField: 'loginKey',
+	passwordField: 'loginPassword',
+	facultyLogin:  'facultyChecked',
+
+},
+	function (loginKey, loginPassword,facultyLogin, done) {
+
+
+		if(facultyLogin == true){
+			models.Professor.findOne({ $or: [
+				{sfsu_id: JSON.parse(loginKey)},
+				{email: JSON.parse(loginKey)}
+			]}, function (err, student) {
+			if (err) {
+				return done(err)
+			}
+			if (!student) {
+				console.log("Incorrect username.")
+				return done(null, false, { message: 'Incorrect username.' });
+			}
+			if (student.toObject().password != loginPassword) {
+				console.log("Incorrect password.")
+				return done(null, false, { message: 'Incorrect password.' });
+			}
+			return done(null, student);
+			});
+
+		}else{
+			models.Student.findOne({ $or: [
+				{sfsu_id: JSON.parse(loginKey)},
+				{email: JSON.parse(loginKey)}
+			]}, function (err, student) {
+			if (err) {
+				return done(err)
+			}
+			if (!student) {
+				console.log("Incorrect username.")
+				return done(null, false, { message: 'Incorrect username.' });
+			}
+			if (student.toObject().password != loginPassword) {
+				console.log("Incorrect password.")
+				return done(null, false, { message: 'Incorrect password.' });
+			}
+			return done(null, student);
+			});
+		}
+
+
+		
+	}
+));
+*/
