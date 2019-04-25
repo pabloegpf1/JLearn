@@ -2,8 +2,6 @@
 <html lang="en">
 	<head>
 	   <% include ../partials/bootstrap-head %>	    
-
-	   <link rel="stylesheet" href="./stylesheets/theme.css"/>
 	</head>
 
 	<body>
@@ -15,21 +13,26 @@
 		
 	   
 		<div class="row mb-3 mt-3">
-			  <div class="col-sm-2 col-lg-1 col-xs-12">			
+			  <div class="col-lg-1 col-sm-4 col-xs-12">			
 			  </div>
   
-			  <div class="col-sm-7 col-lg-8 col-xs-12">
-			  	<% include ../partials/course-accordions%>			  	
+			  <div class="col-lg-8 col-sm-7 col-xs-12">			  			  	
+			  	<div class="card">
+				  <h5 class="card-header font-weight-bold">My Courses</h5>
+				  	<div class="card-body">
+			  	<%- include('../partials/course-page/course-accordions', {title: 'CSC 645-01 Computer Networks Spring 2019'}); %>
+
+			  	<%- include('../partials/course-page/course-accordions', {title: 'CSC 645-01 Computer Networks Spring 2019'}); %>
+
+			  	<%- include('../partials/course-page/course-accordions', {title: 'CSC 645-01 Computer Networks Spring 2019'}); %>
+
+			  		</div>
+			     </div>
 			  </div>
   
-			  <div class="col-sm-3 col-lg-3 col-xs-12">
-
-			     <div class="col col-12">					 
-			  	    <% include ../partials/ilearn-support-card%>
-			     </div>	
-				
-			  </div>
-		   </div>
-
+			 <div class="col-lg-3 col-sm-12 col-xs-12">				
+				<% include ../partials/ilearn-support-card%>										
+			 </div>
+		</div>
 	</body>
 </html>
