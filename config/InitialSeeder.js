@@ -1,93 +1,75 @@
 const mongoose = require('mongoose')
 const random = require('random-words')
 
-const Student = require('../models/Student.model');
-const Professor = require('../models/Professor.model');
-			
+const User = require('../models/User.model');
+
+      
 mongoose
-	.connect(
-		`mongodb+srv://JLearn:lnw8qJ9pkS07ou6i@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
-		{
-			useNewUrlParser: true
-		}
-	)
-	.then(() => console.log(`MongoDB connection successful`))
-	.catch((err) => {
-		console.log(`MongoDB connection error: ${err}`)
-		createError(500)
-	});
+  .connect(
+    `mongodb+srv://JLearn:lnw8qJ9pkS07ou6i@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
+    {
+      useNewUrlParser: true
+    }
+  )
+  .then(() => console.log(`MongoDB connection successful`))
+  .catch((err) => {
+    console.log(`MongoDB connection error: ${err}`)
+    createError(500)
+  });
 
 
 
 let nextId = 900000000;
-let newStudentCount = 5000;
-let newProfessorCount = 10;
+let newStudentCount = 100;
+let newProfessorCount = 2;
 let nextFirstName='';
 
 
-let newStudents=[];
-let majorDepartments=['physics', 'math' , 'art']
-let totalMajorDepartment = majorDepartments.length-1;
+let newUsers=[];
 
-let newProfessors = [];
-let profRoles = ['LECTURER', 'TENURED', 'NON_TENURED'];
-let totalRoles = profRoles.length-1;
 
-//create "newStudentCount" many new students
+//new students
 [...Array(newStudentCount)].forEach((_, i) => {
   
   nextFirstName = random()+i; //ensure uniqueness in name and email
   nextId = nextId+1;
 
-  newStudents.push(
-    new Student({
+  newUsers.push(
+    new User({
       sfsu_id: nextId,
       first_name: nextFirstName,
-	  last_name: random(),
-	  email: nextFirstName+'@mail.sfsu.edu',
-	  password: nextFirstName+'123',
-	  major: majorDepartments[Math.floor(Math.random() * totalMajorDepartment)], //select random element from majors array
-    })  	
+      last_name: random(),
+      email: nextFirstName+'@mail.sfsu.edu',
+      password: nextFirstName+'123',    
+    })    
   );
 });
 
-
-//create "newProfessorCount" many new professors
+//new prof
 [...Array(newProfessorCount)].forEach((_, i) => {
   
-  nextFirstName = random()+i;
+  nextFirstName = random()+i; //ensure uniqueness in name and email
   nextId = nextId+1;
 
-  newProfessors.push(
-    new Professor({
+  newUsers.push(
+    new User({
       sfsu_id: nextId,
       first_name: nextFirstName,
-	  last_name: random(),
-	  email: nextFirstName+'@mail.sfsu.edu',
-	  password: nextFirstName+'123',
-	  role: profRoles[Math.floor(Math.random() * totalRoles)],
-	  department: majorDepartments[Math.floor(Math.random() * totalMajorDepartment)],
-	  
-    })  	
+      last_name: random(),
+      email: nextFirstName+'@mail.sfsu.edu',
+      password: nextFirstName+'123',    
+    })    
   );
 });
+
 
 
 //save the student and professors to the database
 
-Student.insertMany(newStudents)
-	.then(function(mongooseDocuments) {
+User.insertMany(newStudents)
+  .then(function(mongooseDocuments) {
        
     })
     .catch(function(err) {
        console.log(err);
     });
-
-
-Professor.insertMany(newProfessors)
-	.then(function(mongooseDocuments) {
-       mongoose.disconnect();
-    })
-    .catch(function(err) {
-       console.log(err);
-    });   
