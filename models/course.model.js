@@ -32,7 +32,7 @@ const courseSchema = new Schema({
     },
     professor: {
         type: Schema.Types.ObjectId,
-        ref: 'Professor',
+        ref: 'User',
         required: true
     }
 });

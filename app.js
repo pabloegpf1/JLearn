@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const passport = require('passport')
 const localStrategy = require('passport-local').Strategy;
-const Student = require('./models/student.model');
+const User = require('./models/user.model');
 var bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -71,19 +71,19 @@ passport.use(new localStrategy({
 	passwordField: 'loginPassword',
 	passReqToCallback: true
 }, function (req, loginKey, loginPassword, done) {
-	Student.findOne({ sfsu_id: JSON.parse(loginKey) }, function (err, student) {
+	User.findOne({ sfsu_id: JSON.parse(loginKey) }, function (err, user) {
 		if (err) {
 			return done(err)
 		}
-		if (!student) {
+		if (!user) {
 			console.log("Incorrect username.")
 			return done(null, false, req.flash("authMessage", 'Incorrect username.'));
 		}
-		if (student.toObject().password != loginPassword) {
+		if (user.toObject().password != loginPassword) {
 			console.log("Incorrect password.")
 			return done(null, false, req.flash("authMessage", 'Incorrect password.'));
 		}
-		return done(null, student);
+		return done(null, user);
 	});
 }
 ));
