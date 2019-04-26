@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <% include ../partials/bootstrap-head %>	    
+	</head>
+
+	<body>
+		<div class="row">
+			<div class="col col-12">
+			 <% include ../partials/main-nav%>
+			</div>	
+		</div>
+		
+	   
+			<div class="row m-3">
+			  <div class="col-lg-3 col-sm-3 col-xs-12">			
+			  	<div class="card">
+			  		<div class="card-header">
+    					Your assignments
+  					</div>
+  					
+  					
+  					   <div class="list-group">
+  					  	<a class="list-group-item list-group-item-action" href="#">Grades</a>
+  					  
+  					  
+  					  	<a class="list-group-item list-group-item-action" href="#">Calendar</a>
+  					  
+  					  
+  					  	<a class="list-group-item list-group-item-action" href="#">Course Block 1 - Syllabus</a>
+  					   </div>
+
+  					   <a class="list-group-item list-group-item-action" href="#">Course Block 2 - Syllabus </a>
+  					   </div>
+  		
+				  </div>
+	         
+
+
+  
+			  <div class="col-lg-6 col-sm-8 col-xs-12">			  	
+							
+				<%- include('../partials/course-page/course-content-title', {title: 'Course Detail: CSC 0645-01 Computer Networks Spring 2019' , course:'CSC064501-S19R'}); %>	
+
+							
+
+				<div class="card">
+ 				  <div class="card-body">
+					<%- include('../partials/course-page/course-content-container', {title: 'hello'}); %>
+
+					<%- include('../partials/course-page/course-content-container', {title: 'hello'}); %>
+				  </div>				   
+				</div>
+				
+			  </div>
+  
+			 <div class="col-lg-3 col-sm-12 col-xs-12">				
+				<% include ../partials/ilearn-support-card%>										
+			  </div>
+		</div>
+	</body>
+</html>

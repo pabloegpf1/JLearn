@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <% include ../partials/bootstrap-head %>	    
+	</head>
+
+	<body>
+		<div class="row">
+			<div class="col col-12">
+			 <% include ../partials/main-nav%>
+			</div>	
+		</div>
+		
+	   
+		<div class="row mb-3 mt-3">
+			  <div class="col-lg-1 col-sm-4 col-xs-12">			
+			  </div>
+  
+			  <div class="col-lg-8 col-sm-7 col-xs-12">			  			  	
+			  	<div class="card">
+				  <h5 class="card-header font-weight-bold">My Courses</h5>
+				  	<div class="card-body">
+			  	<%- include('../partials/course-page/course-accordions', {title: 'CSC 645-01 Computer Networks Spring 2019'}); %>
+
+			  	<%- include('../partials/course-page/course-accordions', {title: 'CSC 645-01 Computer Networks Spring 2019'}); %>
+
+			  	<%- include('../partials/course-page/course-accordions', {title: 'CSC 645-01 Computer Networks Spring 2019'}); %>
+
+			  		</div>
+			     </div>
+			  </div>
+  
+			 <div class="col-lg-3 col-sm-12 col-xs-12">				
+				<% include ../partials/ilearn-support-card%>										
+			 </div>
+		</div>
+	</body>
+</html>

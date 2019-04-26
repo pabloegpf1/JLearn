@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <% include ../partials/bootstrap-head %>	    	   
+	</head>
+
+	<body>
+		<div class="row">
+			<div class="col col-12">
+			 <% include ../partials/main-nav%>
+			</div>	
+		</div>
+		
+	   
+		<div class=" row m-3">
+			  <div class="col-sm-4 col-lg-2 col-xs-12">
+			  
+			  	<div class="card">
+			  		<div class="card-header">
+    					Your assignments
+  					</div>
+  					
+  					<ul class="list-group list-group-flush">
+  					  <li class="list-group-item">
+  					  	<a href="#">List</a>
+  					  </li>
+
+  					  <li class="list-group-item">
+  					  	<a href="#">Of the</a>
+  					  </li>
+
+  					  <li class="list-group-item">
+  					  	<a href="#">Grade links</a>
+  					  </li>
+  			
+  					</ul>
+				  </div>
+
+			  </div>
+  
+			  <div class="col-sm-8 col-lg-10 col-xs-12">
+			  	<div class="card">
+  					<div class="card-body">
+    					<h5 class="font-weight-bold">CSC 0645-01 Computer Networks Spring 2019: Grades: </h5>
+  					</div>
+
+  					<div class="breadcrumb-nav">
+      				  <nav role="navigation">
+      				      <ol class="breadcrumb">
+      				          <li class="breadcrumb-item">
+      				              <a href="#">My Courses</a>
+      				          </li>
+      				          <li class="breadcrumb-item">
+      				              <a href="#" title="course-name"><%= 'the course' %></a>
+      				          </li>
+      				          <li class="breadcrumb-item">
+      				              <a href="#" title="course-name">Grades</a>
+      				          </li>
+      				      </ol>
+      				  </nav>
+    				</div>
+				</div>
+
+
+
+			  	<% include ../partials/course-page/gradebook-table%>			  	
+			  </div>
+		</div>
+	</body>
+</html>

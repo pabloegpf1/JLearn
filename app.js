@@ -1,3 +1,4 @@
+
 const express = require('express')
 const path = require('path')
 const logger = require('morgan')
@@ -20,7 +21,7 @@ const app = express()
 
 mongoose
 	.connect(
-		`mongodb+srv://JLearn:${process.env.DB_PASSWORD}@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
+		`mongodb+srv://JLearn:${process.env.DB_PASSWORD || 'lnw8qJ9pkS07ou6i'}@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
 		{
 			useNewUrlParser: true
 		}

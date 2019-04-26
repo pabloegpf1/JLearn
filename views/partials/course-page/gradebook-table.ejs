@@ -1,0 +1,40 @@
+<div class="table-responsive">
+  <div class="card-body">
+      <table class="table table-striped">
+    
+
+        <thead>
+            <tr>
+              <th id="itemname" class="header">Grade item</th>
+              <th id="grade" class="header">Grade</th>
+              <th id="range" class="header">Range</th>
+              <th id="percentage" class="header">Percentage</th>
+              <th id="weight" class="header column-weight">Calculated weight</th>
+              <th id="contributiontocoursetotal" class="header column-contributiontocoursetotal">Contribution to course total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+              <th colspan="1"><span tabindex="0"><img class="icon icon itemicon" alt="Natural" title="Natural" src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/i/agg_sum">Course total</span></th>
+              <td>299.25 (A)</td>
+              <td>0.00–300.00</td>
+              <td>99.75 %</td>
+              <td>-</td>
+              <td>-</td>
+          </tr>
+<% /* %>
+ FOR LOOP HERE TO LOAD IN THE REST OF STUDENT'S GRADEBOOK ITEM
+<% */ %>
+          <% include ./grade-item/hw-item %>         
+          <% include ./grade-item/project-item %>
+<% /* %>
+ END FOR LOOP
+<% */ %>        
+                   
+        </tbody>
+
+      </table>
+  </div>
+</div>

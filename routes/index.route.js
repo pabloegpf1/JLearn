@@ -28,5 +28,8 @@ router.post('/logout', (req, res) => {
 	res.send('hello')
 })
 
-module.exports = router
+router.get('/home', (req, res) => {
+	res.render('pages/homepage');
+});
 
+module.exports = router;
