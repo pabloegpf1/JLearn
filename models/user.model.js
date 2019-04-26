@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+    sfsu_id: {
+        type: Number,
+        min: 900000000,
+        max: 1000000000,
+        required: true
+    },
     first_name: {
         type: String,
         required: true
@@ -24,4 +30,5 @@ const userSchema = new Schema({
     }
 });
 
-module.exports = userSchema;
+const User = mongoose.model(`User`, userSchema);
+module.exports = User;
