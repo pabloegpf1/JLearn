@@ -4,7 +4,7 @@ module.exports.list = (req, res) => {
 	if (!req.user) {
 		res.redirect('/login')
 	}
-	Course.find({})
+	Course.find({ $or: [{ students: req.user._id }, { professor: req.user._id }] })
 		.then((courses) => res
 			.render('pages/ilearn-homepage', {
 				courses: courses

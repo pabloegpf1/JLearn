@@ -26,10 +26,10 @@ const courseSchema = new Schema({
         required: true
     },
     blocks: [courseBlockSchema],
-    students: {
-        type: Array,
-        default: []
-    },
+    students: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     professor: {
         type: Schema.Types.ObjectId,
         ref: 'User',
