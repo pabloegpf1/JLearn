@@ -1,26 +1,32 @@
 // temporary serving view GET requests
 const express = require('express')
 const router = express.Router()
+const passport = require('passport')
 const indexController = require('../controllers/index.controller')
 
 router.get('/', indexController.list)
 
 router.get('/login', (req, res) => {
-	res.render('pages/login')
+	res.render('pages/login', {
+		authMessage: req.flash('authMessage'),
+	})
 })
 
 router.get('/profile', (req, res) => {
 	res.render('pages/profile')
 })
 
-router.post('/login', (req, res) => {
-	console.log('request: ')
-	console.log(req.body)
-	res.send('hello')
-})
+router.post('/login',
+	passport.authenticate('local', {
+		successRedirect: '/',
+		failureRedirect: '/login',
+		failureFlash: true
+	})
+)
 
 router.post('/logout', (req, res) => {
 	res.send('hello')
 })
 
 module.exports = router
+
