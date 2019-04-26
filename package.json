@@ -34,5 +34,6 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "session": "^0.1.0"
+    "random-words": "^1.1.0"
   }
 }

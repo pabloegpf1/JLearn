@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const userSchema = require('./user.model');
 
-const studentSchema = new Schema({
-    ...userSchema,
+const studentSchema = new Schema({    
+	...userSchema,
+	
     major: {
         type: String,
         required: true

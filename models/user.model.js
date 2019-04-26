@@ -1,8 +1,11 @@
-const userSchema = {
-    sfsu_id: {
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+    sfsu_id:{
         type: Number,
-        min: 900000000,
-        max: 1000000000,
+        min:900000000,
+        max:1000000000,
         required: true
     },
     first_name: {

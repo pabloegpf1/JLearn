@@ -4,6 +4,7 @@ const userSchema = require('./user.model');
 
 const professorSchema = new Schema({
     ...userSchema,
+    
     role: {
         type: String,
         required: true,
