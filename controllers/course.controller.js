@@ -7,7 +7,7 @@ module.exports.list = (req, res) => {
 }
 
 module.exports.detail = (req, res) => {
-    Course.findOne({id: req.params.id})
+    Course.findOne({id: req.params.id, $or: [{ students: req.user.id }, { professor: req.user.id }]})
         .then(course => {
             res.render('pages/course-detail', {
                 course: course
