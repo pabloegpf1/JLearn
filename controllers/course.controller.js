@@ -29,21 +29,24 @@ module.exports.detail = (req, res) => {
 
 module.exports.addBlock = (req, res) => {
     Course.findOne({
-        id: req.params.id,
-        $or: [{
-            students: req.user.id
-        }, {
-            professor: req.user.id
-        }]
-    })
-    .then(course => {
-        // add course block here (POST request)
-        // more on sub-documents here: https://mongoosejs.com/docs/subdocs.html
-        course.blocks.push({
-            title: 'COURSE BLOCK TITLE',
-            description: 'COURSE BLOCK DESCRIPTION',
-            files: []
+            id: req.params.id,
+            $or: [{
+                students: req.user.id
+            }, {
+                professor: req.user.id
+            }]
         })
-    })
-    .catch(err => res.send(err));
+        .then(course => {
+            // add course block here (POST request)
+            // more on sub-documents here: https://mongoosejs.com/docs/subdocs.html
+            course.blocks.create({
+                title: 'COURSE BLOCK TITLE',
+                description: 'COURSE BLOCK DESCRIPTION',
+                files: []
+            });
+            course.save()
+                .then(() => {})
+                .catch(err => console.error(err));
+        })
+        .catch(err => res.send(err));
 }
