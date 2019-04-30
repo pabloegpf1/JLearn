@@ -40,13 +40,13 @@ module.exports.addBlock = (req, res) => {
             // add course block here (POST request)
             // more on sub-documents here: https://mongoosejs.com/docs/subdocs.html
             course.blocks.create({
-                title: 'COURSE BLOCK TITLE',
-                description: 'COURSE BLOCK DESCRIPTION',
+                title: req.body.title,
+                description: req.body.description,
                 files: []
             });
             course.save()
                 .then(() => {})
                 .catch(err => console.error(err));
         })
-        .catch(err => res.send(err));
+        .catch(err => console.error(err));
 }
