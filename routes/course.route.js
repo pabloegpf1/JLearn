@@ -3,6 +3,7 @@ const courseController = require('../controllers/course.controller');
 
 const router = express.Router();
 
+
 function isLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) {
         res.redirect('/login')
@@ -29,6 +30,10 @@ router.get('/detail', (req, res) => {
 
 router.get('/profgradebook', (req, res) => {
 	res.render('pages/profgradebook');
+});
+
+router.get('/userprofile', (req, res) => {
+    res.render('pages/userprofile');
 });
 
 module.exports = router;

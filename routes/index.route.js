@@ -1,4 +1,5 @@
 // temporary serving view GET requests
+
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
@@ -31,5 +32,10 @@ router.post('/logout', (req, res) => {
 router.get('/home', (req, res) => {
 	res.render('pages/homepage');
 });
+
+router.get('/userprofile', (req, res) => {
+    res.render('pages/userprofile');
+});
+
 
 module.exports = router;
