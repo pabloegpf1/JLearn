@@ -37,5 +37,9 @@ router.get('/userprofile', (req, res) => {
     res.render('pages/userprofile');
 });
 
+router.get('/messages', (req, res) => {
+    res.render('pages/messages');
+});
+
 
 module.exports = router;
