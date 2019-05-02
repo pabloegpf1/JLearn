@@ -41,5 +41,9 @@ router.get('/messages', (req, res) => {
     res.render('pages/messages');
 });
 
+router.get('/calender', (req, res) => {
+    res.render('pages/calender');
+});
+
 
 module.exports = router;
