@@ -100,4 +100,8 @@ app.use(`/courses`, coursesRouter)
 // if it made it here, app broke
 app.use((req, res, next) => createError(500))
 
+app.get('/inbox', function(req, res){ 
+	res.render('pages/inbox',{user:"John Smith"}) 
+  }); 
+
 app.listen(3000, () => console.log(`Express running...`))
