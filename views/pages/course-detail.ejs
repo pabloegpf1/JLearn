@@ -23,11 +23,7 @@
 
 				<div class="list-group">
 					<a class="list-group-item list-group-item-action" href="#">Grades</a>
-
-
 					<a class="list-group-item list-group-item-action" href="#">Calendar</a>
-
-
 					<a class="list-group-item list-group-item-action" href="#">Course Block 1 - Syllabus</a>
 				</div>
 
@@ -42,7 +38,11 @@
 		<div class="col-lg-6 col-sm-8 col-xs-12">
 
 			<div class="card">
-				<h5 class="card-header font-weight-bold"><%= isProfessor %></h5>
+				<!-- <h5 class="card-header font-weight-bold"><%= isProfessor %></h5> -->
+				<%if(isProfessor) {%>
+					<button type="button" class="btn btn-primary"> <i class="fa fa-plus" aria-hidden="true"></i> Content</button>
+					<button type="button" class="btn btn-primary"> <i class="fa fa-edit" aria-hidden="true"></i> Edit</button>
+					<% }%>
 				<div class="breadcrumb-nav">
 					<nav role="navigation">
 						<ol class="breadcrumb">
@@ -59,16 +59,13 @@
 
 			<div class="card">
 				<div class="card-body">
-
 					<div class="card">
 						<ul>
 							<h3>
 								<a href="#">Syllabus</a>
 							</h3>
-
 							<ul class="section img-text">
 								<li>
-
 									<a class="" onclick="" href="">
 										<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
 											class="iconlarge activityicon" alt=" " role="presentation">
@@ -85,7 +82,11 @@
 
 				</div>
 			</div>
+		</div>
+		<div>
+			<form>
 
+			</form>
 		</div>
 
 		<div class="col-lg-3 col-sm-12 col-xs-12">
