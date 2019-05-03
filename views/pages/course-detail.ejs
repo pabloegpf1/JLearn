@@ -1,62 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	   <% include ../partials/bootstrap-head %>	    
-	</head>
 
-	<body>
-		<div class="row">
-			<div class="col col-12">
-			 <% include ../partials/main-nav%>
-			</div>	
+<head>
+	<% include ../partials/bootstrap-head %>
+</head>
+
+<body>
+	<div class="row">
+		<div class="col col-12">
+			<% include ../partials/main-nav%>
 		</div>
-		
-	   
-			<div class="row m-3">
-			  <div class="col-lg-3 col-sm-3 col-xs-12">			
-			  	<div class="card">
-			  		<div class="card-header">
-    					Your assignments
-  					</div>
-  					
-  					
-  					   <div class="list-group">
-  					  	<a class="list-group-item list-group-item-action" href="#">Grades</a>
-  					  
-  					  
-  					  	<a class="list-group-item list-group-item-action" href="#">Calendar</a>
-  					  
-  					  
-  					  	<a class="list-group-item list-group-item-action" href="#">Course Block 1 - Syllabus</a>
-  					   </div>
-
-  					   <a class="list-group-item list-group-item-action" href="#">Course Block 2 - Syllabus </a>
-  					   </div>
-  		
-				  </div>
-	         
+	</div>
 
 
-  
-			  <div class="col-lg-6 col-sm-8 col-xs-12">			  	
-							
-				<%- include('../partials/course-page/course-content-title', {title: 'Course Detail: CSC 0645-01 Computer Networks Spring 2019' , course:'CSC064501-S19R'}); %>	
-
-							
-
-				<div class="card">
- 				  <div class="card-body">
-					<%- include('../partials/course-page/course-content-container', {title: 'hello'}); %>
-
-					<%- include('../partials/course-page/course-content-container', {title: 'hello'}); %>
-				  </div>				   
+	<div class="row m-3">
+		<div class="col-lg-3 col-sm-3 col-xs-12">
+			<div class="card">
+				<div class="card-header">
+					Your assignments
 				</div>
-				
-			  </div>
-  
-			 <div class="col-lg-3 col-sm-12 col-xs-12">				
-				<% include ../partials/ilearn-support-card%>										
-			  </div>
+
+
+				<div class="list-group">
+					<a class="list-group-item list-group-item-action" href="#">Grades</a>
+
+
+					<a class="list-group-item list-group-item-action" href="#">Calendar</a>
+
+
+					<a class="list-group-item list-group-item-action" href="#">Course Block 1 - Syllabus</a>
+				</div>
+
+				<a class="list-group-item list-group-item-action" href="#">Course Block 2 - Syllabus </a>
+			</div>
+
 		</div>
-	</body>
+
+
+
+
+		<div class="col-lg-6 col-sm-8 col-xs-12">
+
+			<div class="card">
+				<h5 class="card-header font-weight-bold"><%= isProfessor %></h5>
+				<div class="breadcrumb-nav">
+					<nav role="navigation">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="#">My Courses</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="#" title="course-name"><%= course[0].title %></a>
+							</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+
+					<div class="card">
+						<ul>
+							<h3>
+								<a href="#">Syllabus</a>
+							</h3>
+
+							<ul class="section img-text">
+								<li>
+
+									<a class="" onclick="" href="">
+										<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
+											class="iconlarge activityicon" alt=" " role="presentation">
+
+										<span class="instancename"> Syllabus </span>
+										<span> File </span>
+									</a>
+
+								</li>
+							</ul>
+
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-lg-3 col-sm-12 col-xs-12">
+			<% include ../partials/ilearn-support-card%>
+		</div>
+	</div>
+</body>
+
 </html>
