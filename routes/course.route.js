@@ -15,6 +15,7 @@ function isLoggedIn(req, res, next) {
 
 router.get(`/`, isLoggedIn, courseController.list);
 router.get(`/:id`, isLoggedIn, courseController.detail);
+router.get(`/:/id/add-block`, isLoggedIn, courseController.addNewBlock)
 router.post(`/:id/add-block`, isLoggedIn, courseController.addBlock);
 router.get(`/:id/participants`, isLoggedIn, courseController.particpants);
 
