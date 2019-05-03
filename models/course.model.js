@@ -41,8 +41,8 @@ const courseSchema = new Schema({
 // Get the Professor User Object for a Course
 // Example of using this;
 // Course.getProfessorUser((err, professor) => console.log(professor));
-courseSchema.methods.getProfessorUser = function() {
-    return User.findById(this.professor, callback);
+courseSchema.methods.getProfessorUser = function () {
+    return User.findById(JSON.parse(this.professor), callback);
 }
 
 const Course = mongoose.model(`Course`, courseSchema);
