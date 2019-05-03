@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const courseBlockSchema = require('./courseBlock.model');
+const User = require('./user.model');
 
 const courseSchema = new Schema({
     semester: {
@@ -26,16 +27,23 @@ const courseSchema = new Schema({
         required: true
     },
     blocks: [courseBlockSchema],
-    students: {
-        type: Array,
-        default: []
-    },
+    students: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     professor: {
         type: Schema.Types.ObjectId,
-        ref: 'Professor',
+        ref: 'User',
         required: true
     }
 });
+
+// Get the Professor User Object for a Course
+// Example of using this;
+// Course.getProfessorUser((err, professor) => console.log(professor));
+courseSchema.methods.getProfessorUser = function () {
+    return User.findById(JSON.parse(this.professor), callback);
+}
 
 const Course = mongoose.model(`Course`, courseSchema);
 module.exports = Course;
