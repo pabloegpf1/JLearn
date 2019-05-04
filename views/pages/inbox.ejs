@@ -16,8 +16,6 @@
 								<div class="card-header">
 									Your assignments
 								</div>
-				
-				
 								<div class="list-group">
 									<a class="list-group-item list-group-item-action" href="#">Grades</a>
 									<a class="list-group-item list-group-item-action" href="#">Calendar</a>
@@ -33,9 +31,9 @@
 				<!-- List of Person is messaging -->
 				<a href="" class="inbox-user-card-link">
 					<div class="inbox-user-card">
-						<h5><% ="HelloWorld" %></h5> 
+						<h5><%= chats[0][0] %></h5> 
 						<!-- <span>1/1/19</span> -->
-						<p>The first bit of the messege?</p>
+						<p><%= chats[0][1][(chats[0][1].length -1)][1] %></p>
 					</div>
 				</a>
 			</div>
@@ -59,7 +57,7 @@
 				<div id="text-input" class="row">
 					<form class="row">
 							<div class="form-check-inline">
-									<input id="" type="text" name="Messege" placeholder="Send a Message!" class="form-control">
+									<input id="" type="text" name="Messege" placeholder="Send a Message!" class="form-control" autocomplete="off">
 									<input type="submit" value="Submit" class="btn btn-success">
 							</div>
 
