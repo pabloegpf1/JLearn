@@ -7,7 +7,8 @@ module.exports.list = (req, res) => {
         //.limit(1)
         .then(gradeBook => {
             console.log(gradeBook)
-            res.send(gradeBook[0].course);
+            res.send(gradeBook.course);
         })
         .catch(err => res.send(err));
 };
+

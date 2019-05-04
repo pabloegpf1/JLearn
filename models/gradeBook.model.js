@@ -12,5 +12,5 @@ const GradeBookSchema = new Schema({
     items: [GradeBookItem]
 });
 
-const GradeBook = mongoose.model(`gradeBook`, GradeBookSchema);
+const GradeBook = mongoose.model(`gradebook`, GradeBookSchema);
 module.exports = GradeBook;
