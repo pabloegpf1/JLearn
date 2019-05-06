@@ -37,8 +37,6 @@
 		</div>
 
 
-
-
 		<div class="col-lg-6 col-sm-8 col-xs-12">
 
 			<div class="card">
@@ -57,9 +55,15 @@
 				</div>
 			</div>
 
+
+			<!--  Course Blocks dynamically lodaded below -->
 			<div class="card">
 				<div class="card-body">
 
+		<% if (isProfessor) { %>
+		<a href="#link" class="btn btn-info" role="button"> + Create New Course Block</a>
+		<% } %>
+		<br>
 					<div class="card">
 						<ul>
 							<h3>
@@ -85,6 +89,10 @@
 
 				</div>
 			</div>
+			<!-- end course blocks-->
+
+
+
 
 		</div>
 
@@ -94,4 +102,4 @@
 	</div>
 </body>
 
-</html>
+</html>	
