@@ -22,7 +22,7 @@ module.exports.detail = (req, res) => {
         }]
     }).limit(1)
         .then(course => {
-            console.log(course)
+            //console.log(course)
             res.render('pages/course-detail', {
                 course: course,
                 isProfessor: course[0].professor == req.user._id
@@ -53,7 +53,8 @@ module.exports.addNewBlock = (req, res) => {
 module.exports.addBlock = (req, res) => {
 
     Course.find({
-         _id: req.params.id,
+        _id: req.params.id,
+
         $or: [{
             students: req.user._id
         }, {

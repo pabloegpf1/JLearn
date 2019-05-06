@@ -1,5 +1,7 @@
 const express = require('express');
 const courseController = require('../controllers/course.controller');
+const gradebookController = require('../controllers/gradebook.controller');
+
 
 const router = express.Router();
 
@@ -19,21 +21,9 @@ router.get(`/:id/add-block`, isLoggedIn, courseController.addNewBlock)
 router.post(`/:id/add-block`, isLoggedIn, courseController.addBlock);
 router.get(`/:id/participants`, isLoggedIn, courseController.particpants);
 
-router.get('/assignment', (req, res) => {
-	res.render('pages/assignment');
-});
+//Gradebook
+router.get(`/:id/gradebook`, isLoggedIn, gradebookController.list);
 
-router.get('/gradebook', (req, res) => {
-	res.render('pages/gradebook');
-});
-
-router.get('/detail', (req, res) => {
-	res.render('pages/course-detail');
-});
-
-router.get('/profgradebook', (req, res) => {
-	res.render('pages/profgradebook');
-});
 
 router.get('/userprofile', (req, res) => {
     res.render('pages/userprofile');

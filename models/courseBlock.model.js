@@ -9,10 +9,6 @@ const courseBlockSchema = new Schema({
     description: {
         type: String,
         required: true
-    },
-    files: {
-        type: Array,
-        default: []
     }
 });
 
