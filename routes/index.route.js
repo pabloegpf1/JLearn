@@ -4,7 +4,16 @@ const router = express.Router()
 const passport = require('passport')
 const indexController = require('../controllers/index.controller')
 
-router.get('/', indexController.list)
+function isLoggedIn(req, res, next) {
+    if (!req.isAuthenticated()) {
+        res.redirect('/login')
+    }
+    else {
+        next();
+    }
+}
+
+router.get('/', isLoggedIn, indexController.list)
 
 router.get('/login', (req, res) => {
 	res.render('pages/login', {
@@ -12,9 +21,11 @@ router.get('/login', (req, res) => {
 	})
 })
 
-router.get('/profile', (req, res) => {
-	res.render('pages/profile')
-})
+router.get('/profile', isLoggedIn, (req, res) => {
+	res.render('pages/profile', {
+		user: req.user
+	});
+});
 
 router.post('/login',
 	passport.authenticate('local', {
@@ -24,9 +35,10 @@ router.post('/login',
 	})
 )
 
-router.post('/logout', (req, res) => {
-	res.send('hello')
-})
+router.post('/logout', isLoggedIn, (req, res) => {
+	req.logout();
+	res.redirect('/login');
+});
 
 router.get('/home', (req, res) => {
 	res.render('pages/homepage');
