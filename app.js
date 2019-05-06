@@ -15,12 +15,13 @@ dotenv.config()
 
 const coursesRouter = require('./routes/course.route')
 const indexRouter = require('./routes/index.route')
+const calenderRouter = require('./routes/calender.route')
 
 const app = express()
 
 mongoose
 	.connect(
-		`mongodb+srv://JLearn:${process.env.DB_PASSWORD}@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
+		`mongodb+srv://JLearn:${process.env.DB_PASSWORD || 'lnw8qJ9pkS07ou6i'}@ilearnclone-lgvzf.gcp.mongodb.net/test?retryWrites=true`,
 		{
 			useNewUrlParser: true
 		}
@@ -88,6 +89,7 @@ passport.use(new localStrategy({
 }
 ));
 
+
 // redirect bootstrap dependencies
 app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
 app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
@@ -95,7 +97,7 @@ app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
 // Rest API routes
 app.use(`/`, indexRouter)
 app.use(`/courses`, coursesRouter)
-
+app.use(`/calender`, calenderRouter)
 // if it made it here, app broke
 app.use((req, res, next) => createError(500))
 
