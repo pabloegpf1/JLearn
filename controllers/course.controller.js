@@ -31,6 +31,25 @@ module.exports.detail = (req, res) => {
         .catch(err => res.send(err));
 };
 
+// GET - add new block
+module.exports.addNewBlock = (req, res) => {
+    Course.find({
+        _id: req.params.id,
+        $or: [{
+            students: req.user._id
+        }, {
+            professor: req.user._id
+        }]
+    }).limit(1)
+    .then(course => {
+        res.render('pages/add-block', {
+            course: course,
+            isProfessor: course[0].professor == req.user._id
+        })
+    })
+    .catch(err => res.send(err));
+}
+
 module.exports.addBlock = (req, res) => {
     Course.find({
         _id: req.params.id,
