@@ -60,10 +60,13 @@
 			<div class="card">
 				<div class="card-body">
 
-		<% if (isProfessor) { %>
-		<a href="#link" class="btn btn-info" role="button"> + Create New Course Block</a>
-		<% } %>
-		<br>
+					<% if (isProfessor) { %>
+						<a href="/courses/<%= course[0].id %>/add-block" class="btn btn-info" role="button"> 
+							+ Create New Course Block
+						</a>
+					<% } %>
+
+
 					<div class="card">
 						<ul>
 							<h3>

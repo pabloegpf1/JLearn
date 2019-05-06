@@ -51,25 +51,29 @@ module.exports.addNewBlock = (req, res) => {
 }
 
 module.exports.addBlock = (req, res) => {
+
     Course.find({
         _id: req.params.id,
+
         $or: [{
-            students: req.user.id
+            students: req.user._id
         }, {
-            professor: req.user.id
+            professor: req.user._id
         }]
     }).limit(1)
         .then(course => {
-            // add course block here (POST request)
-            // more on sub-documents here: https://mongoosejs.com/docs/subdocs.html
-            course.blocks.create({
-                title: req.body.title,
-                description: req.body.description,
-                files: []
+           
+         //   add course block here (POST request)
+         //   more on sub-documents here: https://mongoosejs.com/docs/subdocs.html
+            course[0].blocks.push({
+               title: req.body.title,
+               description: req.body.description,
+               files: []
             });
-            course.save()
-                .then(() => { })
-                .catch(err => console.error(err));
+            course[0].save()
+               .then(() => {                
+               })
+               .catch(err => console.error(err));
         })
         .catch(err => console.error(err));
 };
