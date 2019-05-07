@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 const Course = require('../models/course.model');
 
 module.exports.list = (req, res) => {
