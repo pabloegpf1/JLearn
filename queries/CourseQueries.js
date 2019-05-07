@@ -50,22 +50,10 @@ class AddCourseBlocks {
   }
 }
 
-class GetCourseParticipants {
-  constructor(courseId, userId) {
-    this.courseId = courseId;
-    this.userId = userId;
-  }
-
-  execute() {
-    return Course.find({ id: courseId, $or: [{ students: userId }, { professor: userId }] }).limit(1)
-  }
-}
-
 module.exports = {
   FindCoursesForUser,
   GetCourseBlocks,
   getCourseFromId,
   AddCourseBlocks,
-  GetCourseParticipants
+  GetCourseParticipants: require('./courses/get-course-participants')
 }
-
