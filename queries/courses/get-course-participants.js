@@ -7,7 +7,7 @@ class GetCourseParticipants {
   }
 
   execute() {
-    return Course.find({
+    return Course.findOne({
         id: this.courseId,
         $or: [{
           students: this.userId
