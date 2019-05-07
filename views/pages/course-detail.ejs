@@ -19,11 +19,12 @@
 				<div class="card-header font-weight-bold">
 					<h5>Course Toolbar</h5>
 				</div>
-
 				<div class="list-group">
-					<a class="list-group-item list-group-item-action" href="#">Grades</a>
-
-
+					<a class="list-group-item list-group-item-action" href="/courses/<%= course.id %>">
+						<%= course.subject %><%= course.number %>-<%= course.section %> <%= course.semester %>
+					</a>
+					<a class="list-group-item list-group-item-action" href="/courses/<%= course.id %>/gradebook">Grades</a>
+					<a class="list-group-item list-group-item-action" href="/courses/<%= course.id %>/participants">Participants</a>
 					<a class="list-group-item list-group-item-action" href="#">Calendar</a>
 					
 
@@ -37,10 +38,7 @@
 			</div>
 </div>
 		</div>
-
-
 		<div class="col-lg-6 col-sm-8 col-xs-12">
-
 			<div class="card">
 				<div class="card-header">
 				<h3 class="font-weight-bold">
@@ -101,7 +99,6 @@
 									<a class="" onclick="" href="">
 										<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
 											class="iconlarge activityicon" alt=" " role="presentation">
-
 										<span> Syllabus File</span>		
 									</a>
 								</li>
@@ -133,7 +130,6 @@
 				</div>
 			</div>
 			<!-- end course blocks-->
-
 		</div>
 
 		<div class="col-lg-3 col-sm-12 col-xs-12">
@@ -143,11 +139,5 @@
 </body>
 
 </html>	
-
-
-
-
-
-
-
 <!-- <%= isProfessor %> -->
+</html>

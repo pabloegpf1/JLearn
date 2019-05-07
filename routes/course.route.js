@@ -1,7 +1,7 @@
 const express = require('express');
 const courseController = require('../controllers/course.controller');
-const gradebookController = require('../controllers/gradebook.controller');
-
+const gradeBookController = require('../controllers/gradebook.controller');
+const submissionController = require('../controllers/submission.controller');
 
 const router = express.Router();
 
@@ -27,5 +27,9 @@ router.get(`/:id/gradebook`, isLoggedIn, gradebookController.list);
 router.get('/userprofile', (req, res) => {
     res.render('pages/userprofile');
 });
+router.get(`/:id/participants`, isLoggedIn, courseController.participants);
+router.post(`/:id/add-grade-item`, isLoggedIn, gradeBookController.addGradeItem);
+router.post(`/:id/:submissionId/add-submission`, isLoggedIn, submissionController.addSubmissionForItem);
+router.get(`/:id/gradebook`, isLoggedIn, gradeBookController.list);
 
 module.exports = router;
