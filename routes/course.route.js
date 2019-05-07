@@ -24,7 +24,6 @@ router.get(`/:id/participants`, isLoggedIn, courseController.particpants);
 //Gradebook
 router.get(`/:id/gradebook`, isLoggedIn, gradebookController.list);
 
-
 router.get('/userprofile', (req, res) => {
     res.render('pages/userprofile');
 });
