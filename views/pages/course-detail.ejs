@@ -12,10 +12,13 @@
 		</div>
 	</div>
 
-	<div class="row m-3">
-		<div class="col-lg-3 col-sm-3 col-xs-12">
-			<div class="card">
-				<h5 class="card-header font-weight-bold">Navigation</h5>
+	<div class="row bg-main">
+		<div class="col-lg-3 col-sm-3 col-xs-12 left-col ">
+			<div class="p-2">
+			<div class="card ">
+				<div class="card-header font-weight-bold">
+					<h5>Course Toolbar</h5>
+				</div>
 				<div class="list-group">
 					<a class="list-group-item list-group-item-action" href="/courses/<%= course.id %>">
 						<%= course.subject %><%= course.number %>-<%= course.section %> <%= course.semester %>
@@ -23,49 +26,110 @@
 					<a class="list-group-item list-group-item-action" href="/courses/<%= course.id %>/gradebook">Grades</a>
 					<a class="list-group-item list-group-item-action" href="/courses/<%= course.id %>/participants">Participants</a>
 					<a class="list-group-item list-group-item-action" href="#">Calendar</a>
-				</div>
-			</div>
-		</div>
+					
 
+					<% course[0].blocks.forEach( (block,index) => { %>
+					<a class="list-group-item list-group-item-action" href="#">Course Block <%= index%> - <%= block.title %></a>
+
+					<% }) %>
+		
+				</div>
+		
+			</div>
+</div>
+		</div>
 		<div class="col-lg-6 col-sm-8 col-xs-12">
 			<div class="card">
-			   <h5 class="card-header font-weight-bold"><%= course.subject %> <%= course.number %> <%= course.title %></h5>
-				<div class="breadcrumb-nav">
+				<div class="card-header">
+				<h3 class="font-weight-bold">
+					<%= course[0].title%>													
+				</h3>
+
+				<h5 class="font-weight-bold">
+					<%= course[0].subject%> 
+					<%= course[0].number %> -
+					0<%= course[0].section %>
+					Fall 2019 
+					<br>
+				</h5>
+				</div>
+
+				<div class="breadcrumb-nav ">
 					<nav role="navigation">
-						<ol class="breadcrumb">
+						<ol class="breadcrumb bg-white">
 							<li class="breadcrumb-item">
 								<a href="/courses">My Courses</a>
 							</li>
 							<li class="breadcrumb-item">
-								<%= course.title %>
+								<a href="#" title="course-name">
+									<%= course[0].subject%>	
+									<%= course[0].number%>
+									- Section 
+									<%= course[0].section%>
+								</a>
 							</li>
 						</ol>
+
 					</nav>
 				</div>
 			</div>
 
+
+			<!--  Course Blocks dynamically lodaded below -->
 			<div class="card">
 				<div class="card-body">
+					
+					<div class="text-center padding-bottom-lg">	
+					<% if (isProfessor) { %>
+						<a href="/courses/<%= course[0].id %>/add-block" class="btn btn-info" role="button"> 
+							+ Add New Course Block
+						</a>
+					<% } %>
+					</div>
+
+					<hr />
 					<div class="card">
+
 						<ul>
-							<h3>
-								<a href="#">Syllabus</a>
-							</h3>
+							<a class="" onclick="" href="">
+							<h3>Syllabus</h3>
+							</a>	
+							<ul class="section img-text">
+								<li>
+									<a class="" onclick="" href="">
+										<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
+											class="iconlarge activityicon" alt=" " role="presentation">
+										<span> Syllabus File</span>		
+									</a>
+								</li>
+							</ul>
+						</ul>
+					</div>
+
+										<hr />
+					<div class="card">
+
+						<ul>
+							<a class="" onclick="" href="">
+							<h3>Syllabus</h3>
+							</a>	
 							<ul class="section img-text">
 								<li>
 									<a class="" onclick="" href="">
 										<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
 											class="iconlarge activityicon" alt=" " role="presentation">
 
-										<span class="instancename">Syllabus</span>
-										<span>File</span>
+										<span> Syllabus File</span>		
 									</a>
 								</li>
 							</ul>
 						</ul>
 					</div>
+					
+
 				</div>
 			</div>
+			<!-- end course blocks-->
 		</div>
 
 		<div class="col-lg-3 col-sm-12 col-xs-12">
@@ -73,4 +137,7 @@
 		</div>
 	</div>
 </body>
+
+</html>	
+<!-- <%= isProfessor %> -->
 </html>

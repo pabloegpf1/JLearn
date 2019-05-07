@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <% include ../partials/bootstrap-head %>	    
+	</head>
+
+	<body>
+		<div class="row">
+			<div class="col col-12">
+			 <% include ../partials/main-nav%>
+			</div>	
+		</div>
+		
+	   
+		<div class="row mb-3 mt-3">
+			  <div class="col-lg-1 col-sm-4 col-xs-12">			
+			  </div>
+  
+			  <div class="col-lg-8 col-sm-7 col-xs-12">			  			  	
+		<div class="card">
+				<div class="card-body">	  	
+
+			  	<form method="post" action="/courses/<%= course[0].id %>/add-block ">
+  					<div class="form-group">
+   					 	<label for="blockTitle">Block Title</label>
+   						 <input class="form-control" name="title" id="blockTitle" placeholder="ex. section 1">
+  					</div>
+
+
+  					<div class="form-group">
+    					<label for="blockDescription">Block Description</label>
+    				<textarea class="form-control" name="description" id="blockDescription" rows="3"></textarea>
+  					</div>
+
+			
+					  <!-- 
+					  <div class="form-group">
+					    <label for="fileUploader">Upload Files (5 max)</label>
+					    <input type="file" class="form-control-file " multiple="multiple" id="fileUploader">
+					  </div>
+						-->
+
+					<button type="submit" type="button" class="btn btn-light"> + create new block</button>
+				</form>
+			</div>
+		</div>
+			  </div>
+  
+			 <div class="col-lg-3 col-sm-12 col-xs-12">				
+				<% include ../partials/ilearn-support-card%>										
+			 </div>
+		</div>
+
+		<script>
+
+			//var files=[]
+			//var fileUploader = document.getElementById('fileUploader');	
+//
+			//fileUploader.addEventListener('change',(event) => {
+//
+			//	console.log(fileUploader.files);
+			//});
+		</script>
+	</body>
+</html>
