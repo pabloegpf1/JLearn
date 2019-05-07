@@ -22,6 +22,16 @@ router.get('/inbox', (req, res) => {
 			[1, "From Annoying Student"],
 			[1, "When is Homework 2 going to be graded? I also wanted to say that i really like turnips.. they taste so good i just can help myself"],
 			[0, "When i feel like it....."],
+			[0, ".....Dumbass"],
+			[0, "0 is from John"],
+			[1, "From Annoying Student"],
+			[1, "When is Homework 2 going to be graded? I also wanted to say that i really like turnips.. they taste so good i just can help myself"],
+			[0, "When i feel like it....."],
+			[0, ".....Dumbass"],
+			[0, "0 is from John"],
+			[1, "From Annoying Student"],
+			[1, "When is Homework 2 going to be graded? I also wanted to say that i really like turnips.. they taste so good i just can help myself"],
+			[0, "When i feel like it....."],
 			[0, ".....Dumbass"]
 		]],
 		["Mulan", [
