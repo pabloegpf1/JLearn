@@ -1,6 +1,4 @@
-var mongoose = require('mongoose');
 const GradeBook = require('../models/gradeBook.model');
-const GradeBookItem = require('../models/gradeBookItem.model');
 
 module.exports.list = (req, res) => {
     GradeBook.find({ course: req.params.id })
