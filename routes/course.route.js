@@ -17,7 +17,7 @@ function isLoggedIn(req, res, next) {
 router.get(`/`, isLoggedIn, courseController.list);
 router.get(`/:id`, isLoggedIn, courseController.detail);
 router.post(`/:id/add-block`, isLoggedIn, courseController.addBlock);
-//router.get(`/:id/participants`, isLoggedIn, courseController.particpants);
+router.get(`/:id/participants`, isLoggedIn, courseController.participants);
 router.post(`/:id/add-grade-item`, isLoggedIn, gradeBookController.addGradeItem);
 router.post(`/:id/:submissionId/add-submission`, isLoggedIn, submissionController.addSubmissionForItem);
 router.get(`/:id/gradebook`, isLoggedIn, gradeBookController.list);

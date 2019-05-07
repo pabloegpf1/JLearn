@@ -1,3 +1,5 @@
+const Course = require('../../models/course.model');
+
 class GetCourseParticipants {
   constructor(courseId, userId) {
     this.courseId = courseId;
@@ -6,15 +8,14 @@ class GetCourseParticipants {
 
   execute() {
     return Course.find({
-      id: courseId,
-      $or: [{ students: userId }, { professor: userId }]
-    })
-      .limit(1)
-      .then(course => ({
-        course,
-        students: course.students
-      }))
+        id: this.courseId,
+        $or: [{
+          students: this.userId
+        }, {
+          professor: this.userId
+        }]
+      })
   }
 }
 
-module.exports.GetCourseParticipants;
+module.exports = GetCourseParticipants;
