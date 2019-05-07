@@ -5,7 +5,7 @@ const Course = require('../models/course.model');
 module.exports.list = (req, res) => {
     Course.find({ $or: [{ students: req.user._id }, { professor: req.user._id }] })
         .then(courses => {
-            res.render('pages/ilearn-homepage', {
+            res.render('pages/homepage', {
                 courses: courses
             });
         })
@@ -22,7 +22,7 @@ module.exports.detail = (req, res) => {
         }]
     }).limit(1)
         .then(course => {
-            //console.log(course)
+            
             res.render('pages/course-detail', {
                 course: course,
                 isProfessor: course[0].professor == req.user._id
@@ -31,7 +31,7 @@ module.exports.detail = (req, res) => {
         .catch(err => res.send(err));
 };
 
-// GET - add new block
+// GET - add new block page
 module.exports.addNewBlock = (req, res) => {
     Course.find({
         _id: req.params.id,
@@ -50,6 +50,7 @@ module.exports.addNewBlock = (req, res) => {
     .catch(err => res.send(err));
 }
 
+// POST - add new block to db
 module.exports.addBlock = (req, res) => {
 
     Course.find({

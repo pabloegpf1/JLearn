@@ -6,7 +6,7 @@ module.exports.list = (req, res) => {
 	}
 	Course.find({ $or: [{ students: req.user._id }, { professor: req.user._id }] })
 		.then((courses) => res
-			.render('pages/ilearn-homepage', {
+			.render('pages/homepage', {
 				courses: courses
 			})
 		)
