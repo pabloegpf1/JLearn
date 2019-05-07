@@ -1,16 +1,15 @@
 const Course = require('../models/course.model');
+const FindCoursesForUser = require('../queries/find-courses-for-user');
 
-module.exports.list = (req, res) => {
-    Course.find({ $or: [{ students: req.user._id }, { professor: req.user._id }] })
+const list = ({ user: { _id: id } }, response) => {
+    new FindCoursesForUser(id).execute()
         .then(courses => {
-            res.render('pages/ilearn-homepage', {
-                courses: courses
-            });
+            response.render('pages/ilearn-homepage', { courses })
         })
-        .catch(err => res.send(err));
+        .catch( error => response.send(error));
 };
 
-module.exports.detail = (req, res) => {
+const detail = (req, res) => {
     Course.find({
         _id: req.params.id,
         $or: [{
@@ -29,7 +28,7 @@ module.exports.detail = (req, res) => {
         .catch(err => res.send(err));
 };
 
-module.exports.addBlock = (req, res) => {
+const addBlock = (req, res) => {
     Course.find({
         _id: req.params.id,
         $or: [{
@@ -53,7 +52,7 @@ module.exports.addBlock = (req, res) => {
         .catch(err => console.error(err));
 };
 
-module.exports.particpants = (req, res) => {
+const participants = (req, res) => {
     Course.find({
         id: req.params.id,
         $or: [{
@@ -70,3 +69,5 @@ module.exports.particpants = (req, res) => {
         })
         .catch(err => res.send(err));
 };
+
+module.exports = { list, detail, addBlock, participants };

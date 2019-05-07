@@ -45,5 +45,10 @@ courseSchema.methods.getProfessorUser = function () {
     return User.findById(JSON.parse(this.professor), callback);
 }
 
+// TODO: Remove; another option discussed
+// courseSchema.methods.findByUser = userId => {
+//     return Course.find(/* .... */);
+// }
+
 const Course = mongoose.model(`Course`, courseSchema);
 module.exports = Course;
