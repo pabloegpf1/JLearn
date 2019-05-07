@@ -29,12 +29,7 @@ const addBlock = (req, res) => {
 
 const participants = (req, res) => {
     new CourseQueries.GetCourseParticipants(req.params.id, req.user._id).execute()
-        .then(course => {
-            res.render('pages/course-particpants', {
-                course: course,
-                students: course.students
-            });
-        })
+        .then(data => res.render('pages/course-particpants', data))
         .catch(err => res.send(err));
 };
 
