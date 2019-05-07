@@ -16,6 +16,8 @@ router.get(`/`, isLoggedIn, courseController.list);
 router.get(`/:id`, isLoggedIn, courseController.detail);
 router.get(`/:/id/add-block`, isLoggedIn, courseController.addNewBlock)
 router.post(`/:id/add-block`, isLoggedIn, courseController.addBlock);
+router.put(`/:id/add-block`, isLoggedIn, courseController.editBlock);
+router.delete('/:id/add-block', isLoggedIn, courseController.deleteBlock);
 router.get(`/:id/participants`, isLoggedIn, courseController.particpants);
 
 router.get('/assignment', (req, res) => {
