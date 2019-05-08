@@ -27,10 +27,10 @@
 <!-- Start of Center Content -->
 <div id="height-staging" class="col-md-9">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-3" id="chats">
 				<!-- List of Person is messaging -->
 				<% for(var i =0; i < chats.length; i++) { %>
-					<a href="" class="inbox-user-card-link">
+					<a href="javascript:;" onclick="show()" class="inbox-user-card-link">
 							<div class="inbox-user-card">
 								<h6 class="inbox-user-name"><%= chats[i][0] %></h6>
 								<!-- <span>1/1/19</span> -->
@@ -155,8 +155,19 @@
 	}
 </style>
 <script>
-
 	window.addEventListener('DOMContentLoaded', (event) => {
 		console.log(window.innerWidth);
 	});
+	function show(){
+		console.log(myChats);
+	}
+	$(document).ready(function() {
+		var data = {
+			Person: "Dr. Evil",
+			Char: null,
+		};
+		console.log(chats);
+		// $("#resultDiv").html();
+	});
+
 </script>

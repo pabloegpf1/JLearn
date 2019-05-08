@@ -16,6 +16,7 @@ router.get('/profile', (req, res) => {
 	res.render('pages/profile')
 })
 router.get('/inbox', (req, res) => {
+	
 	res.render('pages/inbox', {
 		chats: [["Annoying Student", [
 			[0, "0 is from John"],
@@ -44,20 +45,20 @@ router.get('/inbox', (req, res) => {
 	]
 	})
 })
-router.get('/calendar', (req, res) => {
-	res.render('pages/calendar', {
-		calendarItem: [["5/15/19", "Assignment 1", "CSC668"],
-		["5/15/19", "Assignment 1", "CSC668"],
-		["5/16/19", "Assignment 2", "CSC668"],
-		["5/17/19", "Assignment 3", "CSC668"],
-		["5/18/19", "Assignment 4", "CSC668"],
-		["6/3/19", "Grades are Due", "University"],
-		["5/30/19", "Presentation", "CSC668"],
-		["5/14/19", "Colombian Revolution", "HIST444"]
-		["5/17/19", "Unions and Shit", "HIST444"]
-	]
-	});
-});
+// router.get('/calendar', (req, res) => {
+// 	res.render('pages/calendar', {
+// 		calendarItem: [["5/15/19", "Assignment 1", "CSC668"],
+// 		["5/15/19", "Assignment 1", "CSC668"],
+// 		["5/16/19", "Assignment 2", "CSC668"],
+// 		["5/17/19", "Assignment 3", "CSC668"],
+// 		["5/18/19", "Assignment 4", "CSC668"],
+// 		["6/3/19", "Grades are Due", "University"],
+// 		["5/30/19", "Presentation", "CSC668"],
+// 		["5/14/19", "Colombian Revolution", "HIST444"]
+// 		["5/17/19", "Unions and Shit", "HIST444"]
+// 	]
+// 	});
+// });
 
 router.post('/login',
 	passport.authenticate('local', {
