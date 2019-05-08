@@ -28,7 +28,7 @@
 					<a class="list-group-item list-group-item-action" href="#">Calendar</a>
 					
 
-					<% course[0].blocks.forEach( (block,index) => { %>
+					<% course.blocks.forEach( (block,index) => { %>
 					<a class="list-group-item list-group-item-action" href="#">Course Block <%= index%> - <%= block.title %></a>
 
 					<% }) %>
@@ -42,13 +42,13 @@
 			<div class="card">
 				<div class="card-header">
 				<h3 class="font-weight-bold">
-					<%= course[0].title%>													
+					<%= course.title%>													
 				</h3>
 
 				<h5 class="font-weight-bold">
-					<%= course[0].subject%> 
-					<%= course[0].number %> -
-					0<%= course[0].section %>
+					<%= course.subject%> 
+					<%= course.number %> -
+					0<%= course.section %>
 					Fall 2019 
 					<br>
 				</h5>
@@ -62,10 +62,10 @@
 							</li>
 							<li class="breadcrumb-item">
 								<a href="#" title="course-name">
-									<%= course[0].subject%>	
-									<%= course[0].number%>
+									<%= course.subject%>	
+									<%= course.number%>
 									- Section 
-									<%= course[0].section%>
+									<%= course.section%>
 								</a>
 							</li>
 						</ol>
@@ -81,52 +81,31 @@
 					
 					<div class="text-center padding-bottom-lg">	
 					<% if (isProfessor) { %>
-						<a href="/courses/<%= course[0].id %>/add-block" class="btn btn-info" role="button"> 
+						<a href="/courses/<%= course.id %>/add-block" class="btn btn-info" role="button"> 
 							+ Add New Course Block
 						</a>
 					<% } %>
 					</div>
 
 					<hr />
-					<div class="card">
 
-						<ul>
-							<a class="" onclick="" href="">
-							<h3>Syllabus</h3>
-							</a>	
-							<ul class="section img-text">
-								<li>
-									<a class="" onclick="" href="">
-										<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
-											class="iconlarge activityicon" alt=" " role="presentation">
-										<span> Syllabus File</span>		
-									</a>
-								</li>
+					<% course.blocks.forEach((block,index) => { %>
+						<div class="card">
+							<ul>
+									<h3><%= block.title %></h3>
+									<ul class="section img-text">
+										<li>
+											<a class="" onclick="" href="">
+												<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
+													class="iconlarge activityicon" alt=" " role="presentation">
+												<span> Syllabus File</span>		
+											</a>
+										</li>
+									</ul>
 							</ul>
-						</ul>
-					</div>
-
-										<hr />
-					<div class="card">
-
-						<ul>
-							<a class="" onclick="" href="">
-							<h3>Syllabus</h3>
-							</a>	
-							<ul class="section img-text">
-								<li>
-									<a class="" onclick="" href="">
-										<img src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/f/document-24"
-											class="iconlarge activityicon" alt=" " role="presentation">
-
-										<span> Syllabus File</span>		
-									</a>
-								</li>
-							</ul>
-						</ul>
-					</div>
-					
-
+						</div>
+						</hr>
+					<% }) %>
 				</div>
 			</div>
 			<!-- end course blocks-->

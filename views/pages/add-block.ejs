@@ -20,10 +20,10 @@
 		<div class="card">
 				<div class="card-body">	  	
 
-			  	<form method="post" action="/courses/<%= course[0].id %>/add-block ">
+			  	<form method="post" action="/courses/<%= course.id %>/add-block">
   					<div class="form-group">
    					 	<label for="blockTitle">Block Title</label>
-   						 <input class="form-control" name="title" id="blockTitle" placeholder="ex. section 1">
+   						 <input class="form-control" name="title" id="blockTitle" placeholder="ex. Section 1">
   					</div>
 
 
@@ -40,7 +40,7 @@
 					  </div>
 						-->
 
-					<button type="submit" type="button" class="btn btn-light"> + create new block</button>
+					<button type="submit" type="button" class="btn btn-light"> + Create Course Block</button>
 				</form>
 			</div>
 		</div>

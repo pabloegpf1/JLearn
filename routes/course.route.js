@@ -17,19 +17,20 @@ function isLoggedIn(req, res, next) {
 
 router.get(`/`, isLoggedIn, courseController.list);
 router.get(`/:id`, isLoggedIn, courseController.detail);
-router.get(`/:id/add-block`, isLoggedIn, courseController.addNewBlock)
-router.post(`/:id/add-block`, isLoggedIn, courseController.addBlock);
-router.get(`/:id/participants`, isLoggedIn, courseController.particpants);
+router.get(`/:id/add-block`, isLoggedIn, courseController.addBlock)
+router.post(`/:id/add-block`, isLoggedIn, courseController.createCourseBlock);
+router.get(`/:id/participants`, isLoggedIn, courseController.participants);
+router.get(`/:id/block/:id`, isLoggedIn, courseController.courseBlockDetail);
+router.put(`/:id/block/:id`, isLoggedIn, courseController.courseBlockEdit);
+router.delete(`/:id/block/:id`, isLoggedIn, courseController.courseBlockDelete);
 
 //Gradebook
-router.get(`/:id/gradebook`, isLoggedIn, gradebookController.list);
+router.get(`/:id/gradebook`, isLoggedIn, gradeBookController.list);
 
-router.get('/userprofile', (req, res) => {
+router.get('/userprofile', isLoggedIn, (req, res) => {
     res.render('pages/userprofile');
 });
-router.get(`/:id/participants`, isLoggedIn, courseController.participants);
 router.post(`/:id/add-grade-item`, isLoggedIn, gradeBookController.addGradeItem);
 router.post(`/:id/:submissionId/add-submission`, isLoggedIn, submissionController.addSubmissionForItem);
-router.get(`/:id/gradebook`, isLoggedIn, gradeBookController.list);
 
 module.exports = router;
