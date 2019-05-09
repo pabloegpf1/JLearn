@@ -1,37 +1,23 @@
-const GradeBook = require('../models/gradeBook.model');
+const GradebookQueries = require('../queries/GradebookQueries');
 
 module.exports.list = (req, res) => {
-    GradeBook.find({ course: req.params.id })
-        .populate('course')
-        .limit(1)
+    new GradebookQueries.GetGradebookByCourseId(req.params.id).execute()
         .then(gradebook => {
             res.render('pages/gradebook', {
-                course: gradebook[0].course,
-                items: gradebook[0].items
+                course: gradebook.course,
+                items: gradebook.items
             })
         })
-        .catch(err => res.send(err));
+        .catch(err => console.error(err));
 };
 
 module.exports.addGradeItem = (req, res) => {
-    GradeBook.find({ course: req.params.id })
-        .populate('course')
-        .limit(1)
+    new GradebookQueries.GetGradebookByCourseId(req.params.id).execute()
         .then(gradebook => {
-            if (gradebook[0].course.professor == req.user._id) { //is Professor of the course
-                gradebook[0].items.push = {
-                    weight: 10,
-                    dueDate: '2019-02-01',
-                    MaxPoints: 100
-                    //other values...
-                };
-                gradebook[0].save(function (err) {
-                    if (err) console.error(err)
-                    res.redirect('/courses/' + req.params.id + '/gradebook')
-                });
-            } else {
-                res.redirect('/')
-            }
+            new GradebookQueries.AddGradebookItem(gradebook, req.params.weight, req.params.maxpoints, req.params.duedate).execute()
+                .then(() => {
+                    res.redirect('courses/' + req.params.id + '/gradebook')
+                })
         })
         .catch(err => console.error(err));
 };

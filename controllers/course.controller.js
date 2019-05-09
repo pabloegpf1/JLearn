@@ -17,13 +17,13 @@ const detail = (req, res) => {
 
 const addBlock = (req, res) => {
     new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
-    .then(course => res.render('pages/add-block', {course}))
-    .catch(err => console.error(err));
+        .then(course => res.render('pages/add-block', { course }))
+        .catch(err => console.error(err));
 }
 
 const createCourseBlock = (req, res) => {
     if (Object.keys(req.body).length === 0) {
-        return res.send(`Body required in POST requset`);
+        return res.send(`Body required in POST request`);
     }
     new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
         .then(course => {
@@ -49,20 +49,20 @@ const courseBlockDelete = (req, res) => {
 
 const participants = (req, res) => {
     new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
-    .then(course => res.render('pages/course-participants', {
-        course: course,
-        students: course.students,
-    }))
-    .catch(err => console.error(err));
+        .then(course => res.render('pages/course-participants', {
+            course: course,
+            students: course.students,
+        }))
+        .catch(err => console.error(err));
 };
 
-module.exports = { 
-    list, 
-    detail, 
-    addBlock, 
-    createCourseBlock, 
-    courseBlockDetail, 
+module.exports = {
+    list,
+    detail,
+    addBlock,
+    createCourseBlock,
+    courseBlockDetail,
     courseBlockEdit,
     courseBlockDelete,
-    participants 
+    participants
 };

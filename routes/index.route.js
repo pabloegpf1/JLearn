@@ -5,7 +5,16 @@ const router = express.Router()
 const passport = require('passport')
 const indexController = require('../controllers/index.controller')
 
-router.get('/', indexController.list)
+function isLoggedIn(req, res, next) {
+	if (!req.isAuthenticated()) {
+		res.redirect('/login')
+	}
+	else {
+		next();
+	}
+}
+
+router.get('/', isLoggedIn, indexController.list)
 
 router.get('/login', (req, res) => {
 	res.render('pages/login', {
@@ -34,15 +43,15 @@ router.get('/home', (req, res) => {
 });
 
 router.get('/userprofile', (req, res) => {
-    res.render('pages/userprofile');
+	res.render('pages/userprofile');
 });
 
 router.get('/messages', (req, res) => {
-    res.render('pages/messages');
+	res.render('pages/messages');
 });
 
 router.get('/calender', (req, res) => {
-    res.render('pages/calender');
+	res.render('pages/calender');
 });
 
 

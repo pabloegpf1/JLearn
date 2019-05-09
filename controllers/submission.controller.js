@@ -1,9 +1,7 @@
-const Submission = require('../models/gradeBookItemSubmission.model');
+const SubmissionQueries = require('../queries/SubmissionQueries');
 
 module.exports.listSubmissionsForItem = (req, res) => {
-    Submission.find({ gradeBookItem: req.params.id })
-        .populate('gradebook')
-        .limit(1)
+    new SubmissionQueries.GetSubmissionsForGradebookItem(req.params.id)
         .then(submissions => {
             res.render('pages/profgradebook', {
                 submissions: submissions
@@ -13,9 +11,9 @@ module.exports.listSubmissionsForItem = (req, res) => {
 };
 
 module.exports.addSubmissionForItem = (req, res) => {
-    Submission.create({
-        gradeBookItem: req.params.submissionId,
-        user: req.user._id
-        //files: 
-    });
+    new SubmissionQueries.AddSubmissionsToGradebookItem(req.params.submissionId, req.user._id)
+        .then(() => {
+            res.redirect('courses/' + req.params.id)
+        })
+        .catch(err => res.send(err));
 };
