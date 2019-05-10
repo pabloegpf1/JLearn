@@ -1,13 +1,13 @@
 const Submission = require('../../models/gradeBookItemSubmission.model');
 
 class AddSubmissionsToGradebookItem {
-    constructor(submissionId, userId) {
-        this.submissionId = submissionId;
+    constructor(gradeBookItemId, userId) {
+        this.gradeBookItemId = gradeBookItemId;
         this.userId = userId;
     }
     execute() {
         return Submission.create({
-            gradeBookItem: this.submissionId,
+            gradeBookItem: this.gradeBookItemId,
             user: this.userId
             //files: 
         });

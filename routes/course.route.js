@@ -28,6 +28,9 @@ router.delete(`/:id/block/:id`, isLoggedIn, courseController.courseBlockDelete);
 router.get(`/:id/gradebook`, isLoggedIn, gradeBookController.list);
 router.put(`/:id/add-grade-item`, isLoggedIn, gradeBookController.addGradeItem);
 
+//Submission
+router.get(`/:id/:itemId/submissions`, isLoggedIn, submissionController.listSubmissionsForItem);
+router.get(`/:id/:itemId/add-submission`, isLoggedIn, submissionController.addSubmissionForItem);
 
 router.get('/userprofile', isLoggedIn, (req, res) => {
     res.render('pages/userprofile');

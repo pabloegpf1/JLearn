@@ -1,4 +1,7 @@
 const CourseQueries = require('../queries/CourseQueries');
+const Course = require('../objects/Course');
+const Render = require('../objects/Render');
+
 
 const list = (req, res) => {
     new CourseQueries.FindCoursesForUser(req.user._id).execute()
@@ -49,10 +52,10 @@ const courseBlockDelete = (req, res) => {
 
 const participants = (req, res) => {
     new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
-        .then(course => res.render('pages/course-participants', {
-            course: course,
-            students: course.students,
-        }))
+        .then(course => {
+            let courseObject = new Course(course)
+            new Render(res, courseObject, 'pages/course-participants').render()
+        })
         .catch(err => console.error(err));
 };
 
