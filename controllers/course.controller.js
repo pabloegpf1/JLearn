@@ -1,11 +1,20 @@
 const CourseQueries = require('../queries/CourseQueries');
+const UserQueries = require('../queries/UserQueries');
 const Course = require('../objects/Course');
 const Render = require('../objects/Render');
 
 
 const list = (req, res) => {
     new CourseQueries.FindCoursesForUser(req.user._id).execute()
-        .then(courses => res.render('pages/homepage', { courses }))
+        .then(courses => {
+            let courseList = []
+            for (let courseData in courses) {
+                courseList.push(new Course(courseData))
+                console.log(courseData)
+            }
+            new Render(res, { courses: courseList }, 'pages/homepage')
+        })
+        //.then(courses => res.render('pages/homepage', { courses }))
         .catch(err => console.error(err));
 };
 
@@ -53,6 +62,7 @@ const courseBlockDelete = (req, res) => {
 const participants = (req, res) => {
     new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
         .then(course => {
+            let studentList = Course.getS
             let courseObject = new Course(course)
             new Render(res, courseObject, 'pages/course-participants').render()
         })

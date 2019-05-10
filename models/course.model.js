@@ -45,6 +45,14 @@ courseSchema.methods.getProfessorUser = function () {
     return User.findById(JSON.parse(this.professor), callback);
 }
 
+courseSchema.methods.getStudentObjects = function () {
+    let promises = []
+    for (let studentId in studentIdList) {
+        promises.push(User.findById(studentId))
+    }
+    return Promise.all(promises)
+}
+
 // TODO: Remove; another option discussed
 // courseSchema.methods.findByUser = userId => {
 //     return Course.find(/* .... */);

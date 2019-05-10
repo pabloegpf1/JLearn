@@ -25,6 +25,10 @@ class Course {
         }
     }
 
+    addStudentList(studentList) {
+        this.studentList = studentList
+    }
+
     createBlockList() {
         for (let courseBlock in this.courseBlockData) {
             let block = new CourseBlock(courseBlock.title, courseBlock.description)

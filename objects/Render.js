@@ -6,8 +6,8 @@ class Render {
     }
 
     render() {
-        console.log(JSON.stringify(this.object.toJson()))
-        this.res.render(this.template, this.object.toJson())
+        console.log(JSON.stringify(this.object))
+        this.res.render(this.template, this.object)
     }
 
 }
