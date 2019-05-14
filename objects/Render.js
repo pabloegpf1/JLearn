@@ -1,15 +1,21 @@
 class Render {
-    constructor(res, object, template) {
-        this.res = res
-        this.object = object
+    constructor(response, locals, template) {
+        this.response = response
+        this.locals = locals
         this.template = template
     }
 
     render() {
-        console.log(JSON.stringify(this.object))
-        this.res.render(this.template, this.object)
+        console.log(JSON.stringify(this.locals))
+        this.response.render(this.template, this.locals)
     }
 
+}
+
+class RenderHomepage extends Render {
+    constructor( response, locals ) {
+        super(response, locals, 'pages/homepage')
+    }
 }
 
 module.exports = Render

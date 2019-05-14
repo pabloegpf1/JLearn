@@ -2,27 +2,27 @@ let Student = require('./Student')
 let CourseBlock = require('./CourseBlock')
 
 class Course {
-    constructor(data) {
-        this.title = data.title;
-        this.subject = data.subject;
-        this.number = data.number;
-        this.section = data.section;
-        this.semester = data.semester;
-        this.studentsData = data.students;
-        this.courseBlockData = data.blocks;
+    constructor({ title, subject, number, section, semester, students, blocks }) {
+        this.title = title;
+        this.subject = subject;
+        this.number = number;
+        this.section = section;
+        this.semester = semester;
+        this.studentsData = students;
+        this.courseBlockData = blocks;
+
         this.studentList = []
         this.courseBlockList = []
+        
         this.createUserList()
         console.log(this.studentsData)
         //this.createBlockList()
     }
 
     createUserList() {
-        for (let student in this.studentData) {
-            console.log(student)
-            student = new Student(student.first_name, student.last_name, student.email)
-            this.studentList.push(student)
-        }
+        this.studentList = this.studentData.map(
+            ({ first_name, last_name, email }) => new Student(first_name, last_name, email)
+        );
     }
 
     addStudentList(studentList) {
@@ -30,10 +30,9 @@ class Course {
     }
 
     createBlockList() {
-        for (let courseBlock in this.courseBlockData) {
-            let block = new CourseBlock(courseBlock.title, courseBlock.description)
-            this.courseBlockList.push(block)
-        }
+        this.courseBlockList = this.courseBlockData.map(
+            ({ title, description }) => new CourseBlock(title, description)
+        );
     }
 
     toJson() {

@@ -2,19 +2,50 @@ const CourseQueries = require('../queries/CourseQueries');
 const UserQueries = require('../queries/UserQueries');
 const Course = require('../objects/Course');
 const Render = require('../objects/Render');
+const RenderHomepage = require('../objects/RenderHomepage');
 
+class RouteDefinition {
+    constructor(route, endpoint) {
+        this.route = route,
+        this.endpoint = endpoint;
+    }
 
-const list = (req, res) => {
-    new CourseQueries.FindCoursesForUser(req.user._id).execute()
-        .then(courses => {
-            let courseList = []
-            for (let courseData in courses) {
-                courseList.push(new Course(courseData))
-                console.log(courseData)
-            }
-            new Render(res, { courses: courseList }, 'pages/homepage')
-        })
-        //.then(courses => res.render('pages/homepage', { courses }))
+    route() {
+        return this.route;
+    }
+
+    endpoint() {
+        return this.endpoint;
+    }
+}
+
+const CourseRoutes = [ new ListRouteDefinition() ];
+
+class ListRouteDefinition extends RouteDefinition {
+    constructor() {
+        super('/', this.list() );
+    }
+
+    list() {
+        return ({ user: { _id: id } }, response ) => {
+            new CourseQueries.FindCoursesForUser(id).execute()
+                .then(courses =>
+                    new HomepageRender(response, {
+                        courses: courses.map(courseData => new Course(courseData))
+                    }).render()
+                )
+                .catch(err => console.error(err));
+        }
+    }
+}
+
+const list = ({ user: { _id: id } }, response) => {
+    new CourseQueries.FindCoursesForUser(id).execute()
+        .then(courses => 
+            new HomepageRender(response, { 
+                courses: courses.map(courseData => new Course(courseData)) 
+            }).render()
+        )
         .catch(err => console.error(err));
 };
 

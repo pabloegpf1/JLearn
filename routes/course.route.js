@@ -15,6 +15,8 @@ function isLoggedIn(req, res, next) {
     }
 }
 
+listRouteDefinitions.forEach( def => router.get(def.route(), isLoggedIn, def.endpoint()));
+
 router.get(`/`, isLoggedIn, courseController.list);
 router.get(`/:id`, isLoggedIn, courseController.detail);
 router.get(`/:id/add-block`, isLoggedIn, courseController.addBlock)
