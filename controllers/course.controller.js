@@ -5,9 +5,10 @@ const Render = require('../objects/Render');
 const RenderHomepage = require('../objects/RenderHomepage');
 
 class RouteDefinition {
-    constructor(route, endpoint) {
+    constructor(route, endpoint, methodName) {
         this.route = route,
         this.endpoint = endpoint;
+        this.methodName = methodName;
     }
 
     route() {
@@ -17,13 +18,17 @@ class RouteDefinition {
     endpoint() {
         return this.endpoint;
     }
+
+    methodName() {
+        return this.methodName;
+    }
 }
 
 const CourseRoutes = [ new ListRouteDefinition() ];
 
 class ListRouteDefinition extends RouteDefinition {
     constructor() {
-        super('/', this.list() );
+        super('/', this.list(), 'get' );
     }
 
     list() {

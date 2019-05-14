@@ -15,7 +15,9 @@ function isLoggedIn(req, res, next) {
     }
 }
 
-listRouteDefinitions.forEach( def => router.get(def.route(), isLoggedIn, def.endpoint()));
+listRouteDefinitions.forEach( def => 
+    router[def.methodName()](def.route(), isLoggedIn, def.endpoint())
+);
 
 router.get(`/`, isLoggedIn, courseController.list);
 router.get(`/:id`, isLoggedIn, courseController.detail);
