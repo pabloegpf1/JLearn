@@ -1,12 +1,9 @@
-const Course = require('../models/course.model')
+const CourseQueries = require('../queries/CourseQueries');
 
 module.exports.list = (req, res) => {
-	if (!req.user) {
-		res.redirect('/login')
-	}
-	Course.find({ $or: [{ students: req.user_id }, { professor: req.user_id }] })
-		.then((courses) => res
-			.render('pages/ilearn-homepage', {
+	new CourseQueries.FindCoursesForUser(req.user._id).execute()
+		.then((courses) =>
+			res.render('pages/homepage', {
 				courses: courses
 			})
 		)
@@ -14,3 +11,4 @@ module.exports.list = (req, res) => {
 			console.log(err)
 		})
 }
+

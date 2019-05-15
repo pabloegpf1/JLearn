@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const courseBlockItemSchema = require('./courseBlockItem.model');
 
 const courseBlockSchema = new Schema({
     title: {
@@ -10,10 +11,7 @@ const courseBlockSchema = new Schema({
         type: String,
         required: true
     },
-    files: {
-        type: Array,
-        default: []
-    }
+    items: [courseBlockItemSchema]
 });
 
 module.exports = courseBlockSchema;

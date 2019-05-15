@@ -1,74 +1,81 @@
-var mongoose = require('mongoose');
+const CourseQueries = require('../queries/CourseQueries');
+const UserQueries = require('../queries/UserQueries');
+const Course = require('../objects/Course');
+const Render = require('../objects/Render');
 
-const Course = require('../models/course.model');
 
-module.exports.list = (req, res) => {
-    Course.find({ $or: [{ students: req.user._id }, { professor: req.user._id }] })
+const list = (req, res) => {
+    new CourseQueries.FindCoursesForUser(req.user._id).execute()
         .then(courses => {
-            res.render('pages/ilearn-homepage', {
-                courses: courses
-            });
+            let courseList = []
+            for (let courseData in courses) {
+                courseList.push(new Course(courseData))
+                console.log(courseData)
+            }
+            new Render(res, { courses: courseList }, 'pages/homepage')
         })
-        .catch(err => res.send(err));
+        //.then(courses => res.render('pages/homepage', { courses }))
+        .catch(err => console.error(err));
 };
 
-module.exports.detail = (req, res) => {
-    Course.find({
-        _id: req.params.id,
-        $or: [{
-            students: req.user._id
-        }, {
-            professor: req.user._id
-        }]
-    }).limit(1)
-        .then(course => {
-            console.log(course)
-            res.render('pages/course-detail', {
-                course: course,
-                isProfessor: course[0].professor == req.user._id
-            });
-        })
-        .catch(err => res.send(err));
+const detail = (req, res) => {
+    new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
+        .then(course => res.render('pages/course-detail', {
+            course: course,
+            isProfessor: course.professor == req.user._id
+        }))
+        .catch(err => console.error(err));
 };
 
-module.exports.addBlock = (req, res) => {
-    Course.find({
-        id: req.params.id,
-        $or: [{
-            students: req.user.id
-        }, {
-            professor: req.user.id
-        }]
-    }).limit(1)
+const addBlock = (req, res) => {
+    new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
+        .then(course => res.render('pages/add-block', { course }))
+        .catch(err => console.error(err));
+}
+
+const createCourseBlock = (req, res) => {
+    if (Object.keys(req.body).length === 0) {
+        return res.send(`Body required in POST request`);
+    }
+    new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
         .then(course => {
-            // add course block here (POST request)
-            // more on sub-documents here: https://mongoosejs.com/docs/subdocs.html
-            course.blocks.create({
-                title: req.body.title,
-                description: req.body.description,
-                files: []
-            });
-            course.save()
-                .then(() => { })
-                .catch(err => console.error(err));
+            new CourseQueries.AddCourseBlocks(
+                course, req.body.title, req.body.description).execute()
+                .then(() => res.redirect(`/courses/${course.id}`))
+                .catch(err => console.error(`ERR CREATING COURSE LBOCK: ${err}`));
         })
         .catch(err => console.error(err));
 };
 
-module.exports.particpants = (req, res) => {
-    Course.find({
-        id: req.params.id,
-        $or: [{
-            students: req.user.id
-        }, {
-            professor: req.user.id
-        }]
-    }).limit(1)
+const courseBlockDetail = (req, res) => {
+    res.send(`GET course block detail...`);
+}
+
+const courseBlockEdit = (req, res) => {
+    res.send(`PUT course block detail...`);
+}
+
+const courseBlockDelete = (req, res) => {
+    res.send(`DELETE course block detail`);
+}
+
+const participants = (req, res) => {
+    new CourseQueries.getCourseFromId(req.params.id, req.user._id).execute()
         .then(course => {
-            res.render('pages/course-particpants', {
-                course: course,
-                students: course.students
-            });
+            let studentList = Course.getS
+            let courseObject = new Course(course)
+            new Render(res, courseObject, 'pages/course-participants').render()
         })
-        .catch(err => res.send(err));
+        .catch(err => console.error(err));
+};
+
+module.exports = {
+    list,
+    detail,
+    addBlock,
+    createCourseBlock,
+    courseBlockDetail,
+    courseBlockEdit,
+    courseBlockDelete,
+    participants
 };
