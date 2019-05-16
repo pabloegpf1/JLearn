@@ -16,6 +16,7 @@ dotenv.config()
 const coursesRouter = require('./routes/course.route')
 const indexRouter = require('./routes/index.route')
 const calenderRouter = require('./routes/calender.route')
+// const inboxRouter = require('./routes/inbox.route')
 
 const app = express()
 
@@ -98,11 +99,13 @@ app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
 app.use(`/`, indexRouter)
 app.use(`/courses`, coursesRouter)
 app.use(`/calender`, calenderRouter)
+// app.use(`/inbox`, inboxRouter)
+
 // if it made it here, app broke
 app.use((req, res, next) => createError(500))
 
 app.get('/inbox', function(req, res){ 
-	res.render('pages/inbox',{user:"John Smith"}) 
+	res.render('pages/inbox', {user:"John Smith"}) 
   }); 
 
 app.listen(3000, () => console.log(`Express running...`))

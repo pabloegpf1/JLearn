@@ -6,66 +6,34 @@
 	</head>
 	<body class="">
 <!-- Pseudo Header -->
+<% var test = JSON.stringify(inputChats); %>
+<script>
+		var getTest = <%- test  %>;  //var test is now assigned to getTest which will only work on browsers
+		console.log(getTest[0]);  // successfully prints 101 on browser
+</script>
+<script src="/javascripts/inbox.js"></script>
 		<div class="row" >
 					<div class="col col-12">
 					 <% include ../partials/main-nav%>
 					</div>	
 				</div>
-				<div class="row m-3" id="height-staging">
-						<div class="col-lg-3 col-sm-3 col-xs-12">
-							<div class="card">
-								<div class="card-header">
-									Your assignments
-								</div>
-								<div class="list-group">
-									<a class="list-group-item list-group-item-action" href="#">Grades</a>
-									<a class="list-group-item list-group-item-action" href="#">Calendar</a>
-									<a class="list-group-item list-group-item-action" href="#">Course Block 1 - Syllabus</a>
-								</div>
-								<a class="list-group-item list-group-item-action" href="#">Course Block 2 - Syllabus </a>
-							</div>
-						</div>
 <!-- Start of Center Content -->
 <div id="height-staging" class="col-md-9">
 		<div class="row">
+
 			<div class="col-md-3" id="chats">
 				<!-- List of Person is messaging -->
-				<% for(var i =0; i < chats.length; i++) { %>
-					<a href="javascript:;" onclick="show()" class="inbox-user-card-link">
-							<div class="inbox-user-card">
-								<h6 class="inbox-user-name"><%= chats[i][0] %></h6>
-								<!-- <span>1/1/19</span> -->
-								<p class="inbox-preview"><% chats[i][1][(chats[i][1].length -1)][1] %></p>
-							</div>
-						</a>
-					<% } %>
+				<!-- Insert 0 -->
 			</div>
 			<div class="col-md-9">
-				<% for(var j = 0; j < chats.length; j++) { %>
-				<div id="message-inbox" style="display: none" >
-					<% for(var i =0; i < chats[j][1].length; i++) { %>
-						<% if(chats[j][1][i][0]) { %>
-							<!-- From User -->
-							<div class=" row incomming-messege messege padding-top">
-									<p class="message"><%= chats[j][1][i][1] %></p>
-								</div>
-							<% } else { %>
-								<!-- To User -->
-								<div class="row outgoing-messege messege padding-top">
-										<p class="message"><%= chats[j][1][i][1] %></p>
-									</div>
-								<% } %>
-					<% } %>
-					<!-- Close messege Inbox -->
-				</div>
-				<% } %>
+				<!-- Insert 1 -->
+				<p><%= inputChats %></p>
 				<div id="text-input" class="row">
 					<form class="row col-md-9" onsubmit="return submitText();">
 							<div class="form-check-inline col-md-9">
 									<input id="text-input-field" type="text" name="Messege" placeholder="Send a Message!" class="form-control" autocomplete="off">
 									<input type="submit" value="Submit" class="btn btn-success">
 							</div>
-
 					</form>
 					<!-- Close text-input -->
 				</div>
@@ -88,7 +56,7 @@
 <!-- This is obviosly bad practice and only used as a staging area for CSS for this page-->
 
 <script>
-	const myChats = <%- chats %>;
+	const myChats = <%- inputChats %>;
 	const textInput = document.getElementById("text-input-field");
 	const chatDisplay = document.getElementById("message-inbox");
 
