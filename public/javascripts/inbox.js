@@ -106,11 +106,4 @@ $(document).ready(function() {
     });
     var formHeight = document.getElementById("messeges").clientHeight;
     document.getElementById("messeges").style.maxHeight = (formHeight - 68).toString() + "px";
-    // window.addEventListener("resize", function(){
-    //     var formHeight = document.getElementById("messeges").clientHeight;
-    //     console.log((formHeight - 100).toString() + "px");
-    //     // var tmp = document.getElementById("messeges").style.height = window.innerHeight - 100;
-    //     document.getElementById("messeges").style.maxHeight = (formHeight - 100).toString() + "px";
-    //     // console.log(tmp);
-    // });
 });
