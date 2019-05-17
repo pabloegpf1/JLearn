@@ -9,7 +9,6 @@
 <% var test = JSON.stringify(inputChats); %>
 <script>
 		var getTest = <%- test  %>;  //var test is now assigned to getTest which will only work on browsers
-		console.log(getTest[0]);  // successfully prints 101 on browser
 </script>
 <script src="/javascripts/inbox.js"></script>
 		<div class="row" >
@@ -18,97 +17,40 @@
 					</div>	
 				</div>
 <!-- Start of Center Content -->
-<div id="height-staging" class="col-md-9">
+<div id="height-staging" class="col-md-12">
 		<div class="row">
 
 			<div class="col-md-3" id="chats">
 				<!-- List of Person is messaging -->
 				<!-- Insert 0 -->
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-9" id="messeges">
 				<!-- Insert 1 -->
-				<p><%= inputChats %></p>
-				<div id="text-input" class="row">
-					<form class="row col-md-9" onsubmit="return submitText();">
-							<div class="form-check-inline col-md-9">
-									<input id="text-input-field" type="text" name="Messege" placeholder="Send a Message!" class="form-control" autocomplete="off">
-									<input type="submit" value="Submit" class="btn btn-success">
-							</div>
-					</form>
-					<!-- Close text-input -->
-				</div>
 				<!-- Close col-md-9 -->
 			</div>
+
 			<!-- Close Row -->
 		</div>
-		<!-- Close Col md-6 -->
+		<div class="row">
+				<div class="col-md-3" >
+					</div>
+					<div class="col-md-3" >
+						
+				<div id="text-input" class="row">
+						<form class="row col-md-9" id="myForm" onsubmit="return false;">
+								<div class="form-check-inline col-md-9">
+										<input id="text-input-field" type="text" name="Messege" placeholder="Send a Message!" class="form-control" autocomplete="off">
+										<input type="submit" value="Submit" class="btn btn-success">
+								</div>
+						</form>
+						<!-- Close text-input -->
+				</div>
+			</div>
+		</div>
+
 	</div>
 
-
-	<!-- <div class="col-lg-3 col-sm-12 col-xs-12">
-			<% include ../partials/ilearn-support-card%>
-		</div> -->
 	</div>
 </div>
 	</body>
 </html>
-
-<!-- This is obviosly bad practice and only used as a staging area for CSS for this page-->
-
-<script>
-	const myChats = <%- inputChats %>;
-	const textInput = document.getElementById("text-input-field");
-	const chatDisplay = document.getElementById("message-inbox");
-
-	class Chat{
-		constructor(name, chats){
-			this.name = name;
-			this.chat = chat;
-		}
-		addMessage(text){
-			this.chat.add(text);
-		}
-	}
-
-	function newMessege(text){
-		var div = document.createElement("div");
-		div.classList.add("row");
-		div.classList.add("outgoing-messege");
-		div.classList.add("messege");
-		div.classList.add("padding-top");
-
-		var p = document.createElement("p");
-		p.innerHTML = text;
-		p.classList.add("message");
-
-		div.appendChild(p);
-
-		return div
-	}
-
-	function submitText(text){
-		var something = textInput.value;
-		appendToChatWindow(something);
-		textInput.value = "";
-		// console.log(something);
-		return false;
-	}
-	function appendToChatWindow(text){
-		chatDisplay.appendChild(newMessege(text));
-	}
-	window.addEventListener('DOMContentLoaded', (event) => {
-		console.log(window.innerWidth);
-	});
-
-	function show(){
-		console.log(myChats);
-	}
-	$(document).ready(function() {
-		var data = {
-			Person: "Dr. Evil",
-			Char: null,
-		};
-		
-		console.log(myChats);
-	});
-</script>

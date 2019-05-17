@@ -23,10 +23,9 @@
 		padding-bottom: 5px;
 		margin-bottom: 3px;
 	}
-	#message-inbox{
-		/* height: calc(100% - 100px); */
+	#messeges{
 		display: block;
-		/* overflow: scroll; */
+		overflow-y: scroll;
 	}
 	#text-input{
 		position: fixed;
