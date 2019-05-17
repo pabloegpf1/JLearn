@@ -15,6 +15,15 @@ function isLoggedIn(req, res, next) {
 	}
 }
 
+function isLoggedIn(req, res, next) {
+	if (!req.isAuthenticated()) {
+		res.redirect('/login')
+	}
+	else {
+		next();
+	}
+}
+
 router.get('/', isLoggedIn, indexController.list)
 
 router.get('/login', (req, res) => {
