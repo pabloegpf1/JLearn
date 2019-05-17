@@ -12,7 +12,7 @@
 		</div>
 	</div>
 
-	<div class=" row m-3">
+	<div class="row m-3">
 		<div class="col-sm-4 col-lg-2 col-xs-12">
 			<div class="card">
 				<h5 class="card-header font-weight-bold">Navigation</h5>
@@ -37,55 +37,23 @@
 					<nav role="navigation">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item">
-								<a href="#">My Courses</a>
+								<a href="/courses">My Courses</a>
 							</li>
 							<li class="breadcrumb-item">
-								<a href="#" title="course-name"><%= course.title %></a>
+								<a href="/courses/<%= course.id %>/" title="course-name"><%= course.title %></a>
 							</li>
 							<li class="breadcrumb-item">
-								<a href="#" title="course-name">Grades</a>
+								Participants
 							</li>
 						</ol>
 					</nav>
 				</div>
-			</div>
-
-			<div class="table-responsive">
-				<div class="card-body">
-					<table class="table table-striped">
-
-						<thead>
-							<tr>
-								<th id="itemname" class="header">Grade item</th>
-								<th id="grade" class="header">Grade</th>
-								<th id="range" class="header">Range</th>
-								<th id="percentage" class="header">Percentage</th>
-								<th id="weight" class="header column-weight">Calculated weight</th>
-								<th id="contributiontocoursetotal" class="header column-contributiontocoursetotal">
-									Contribution to course total</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<% for(var i=0; i < items.length; i++) { %>
-							<tr>
-								<th colspan="1"><span tabindex="0"><img class="icon icon itemicon" alt="Natural"
-											title="Natural"
-											src="https://ilearn.sfsu.edu/ay1819/theme/image.php/ilearn34/core/1550063239/i/agg_sum">Course
-										total</span></th>
-								<td>299.25 (A)</td>
-								<td>0.00–300.00</td>
-								<td>99.75 %</td>
-								<td>-</td>
-								<td><%= items[i].weight %>%</td>
-							</tr>
-							<% } %>
-						</tbody>
-					</table>
-				</div>
+				<p>im not sure how to get student object here...</p>
+				<% for(let i = 0; i < students.length; i++) { %>
+					<p>Student: <%= students[i]._id %></p>
+				<% } %>
 			</div>
 		</div>
 	</div>
 </body>
-
 </html>

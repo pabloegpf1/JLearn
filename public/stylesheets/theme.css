@@ -2,6 +2,47 @@
  background-color: #25125b;
 }
 
+.padding-bottom-lg{
+	padding-bottom: 1.5em;
+}
+
+.bg-white{
+	background-color: white !important;
+}
+
+.left-col{
+  background-color: #edf1f2;
+  height: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.middle{
+  background-color: #edf1f2;
+  height: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+
+
+hr{
+	 border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
+
+a{
+	color:#2969a5;
+	font-size: 15px;
+}
+
+.card{
+  margin-top: 10px
+}
+
+
 .primary-color-text{
   color: #4f4370;
 }
