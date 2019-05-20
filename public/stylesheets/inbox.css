@@ -1,0 +1,80 @@
+	/* #text-input-field{
+		
+	} */
+	/* #height-staging{
+		max-height: 500px;
+	
+	} */
+	#body{
+		overflow-x: hidden;
+	}
+	.inbox-user-name, .inbox-preview{
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-top: 7px;
+		/* text-align: center; */
+	}
+
+	.inbox-user-card-link:hover{
+		text-decoration: none;
+	}
+	.inbox-user-card-link:active{
+		text-decoration: none;
+	}
+	.active {
+		background-color: lightgray;
+	}
+	.inbox-user-card{
+		border: Solid 1px grey;
+		border-radius: 3px;
+		padding-bottom: 5px;
+		margin-bottom: 3px;
+	}
+	#messeges{
+		display: block;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	#text-input{
+		position: fixed;
+		bottom: 0;
+		float: bottom;
+		background-color:white;
+		width: 100%;
+	}
+	#active {
+		display: block;
+	}
+	#inactive {
+		display: none;
+	}
+	#input-box{
+		width: 500px;
+	}
+	.incomming-messege{
+		background-color: lightgrey;
+
+	}
+	.outgoing-messege>p.messege {
+		float: right;
+	}
+	.outgoing-messege{
+		float: right;
+		text-align: left;
+		background-color:lightblue; 
+	}
+	.top-spacing-5{
+		margin-top: 5px;
+		padding-top: 5px;
+	}
+	.form-check-inline{
+		padding: 15px;
+
+	}
+	.messege {
+		width: 80%;
+		border: 1px solid black;
+		border-radius: 5px;
+		padding: 5px;
+		margin-top: 5px;
+	}
