@@ -4,6 +4,8 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const indexController = require('../controllers/index.controller')
+const inboxController = require('../controllers/inbox.controller')
+
 
 router.get('/', indexController.list)
 
@@ -40,7 +42,11 @@ router.get('/userprofile', (req, res) => {
 router.get('/messages', (req, res) => {
     res.render('pages/messages');
 });
-
+router.get('/inbox', (req, res) => {
+	res.render('pages/inbox',{
+		inputChats: inboxController.demoInbox.demo,
+	});
+});
 router.get('/calender', (req, res) => {
     res.render('pages/calender');
 });
